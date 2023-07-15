@@ -1,0 +1,23 @@
+
+// sideMenuBtn
+.sideMenuBtn {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+
+	width: 195px;
+
+	.icon {
+		width: 30px;
+		height: 30px;
+
+		* {
+			color: $icon;
+		}
+	}
+	
+	.linkTitle > span{      // 父曾為class linkTitle的所有span標籤
+		margin-left: 24px;
+		color: $icon;
+	}
+}

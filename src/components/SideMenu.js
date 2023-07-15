@@ -1,39 +1,80 @@
 import Logo from '../assets/img/Logo.svg';
+// icon
+import Icon from '@mdi/react';
+import { 
+	mdiViewDashboard, // 儀表板
+	mdiFileDocumentOutline, // 菜單
+	mdiHistory,
+	mdiCashRegister,
+	mdiTimetable,
+	mdiCogOutline,
+	mdiLogout, // 登出
+} from '@mdi/js';
+
+import { useState } from 'react';
+
 
 export function SideMenu() {
+	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);
+	const icons = [
+		{	
+			path: mdiViewDashboard,
+			linkTitle: '儀表板',
+		}, 
+		{	
+			path: mdiFileDocumentOutline,
+			linkTitle: '菜單',
+		},
+		{	
+			path: mdiHistory,
+			linkTitle: '訂單管理',
+		},
+		{	
+			path: mdiCashRegister,
+			linkTitle: '結帳作業',
+		},
+		{	
+			path: mdiTimetable,
+			linkTitle: '班表管理',
+		},
+		{	
+			path: mdiCogOutline,
+			linkTitle: '設定',
+		},
+	];
 
   return (
 		<>
-			<aside className='sideMenuArea'>
+			<aside className="sideMenuArea">
 				<div className="logoArea">
 					<img src={Logo} alt="" />
 				</div>
 				<div className="menuArea">
-					{/* 儀表板 */}
-					<div className='sideMenuBtn'>
-						<div className="icon">
-							<i></i>
-						</div>
-						<div className="linkTitle">
-							<span>儀表板</span>
-						</div>
-					</div>
-					{/* 菜單 */}
-					<div className='sideMenuBtn'>
-						<div className="icon">
-							<i></i>
-						</div>
-						<div className="linkTitle">
-							<span>菜單</span>
-						</div>
-					</div>
+				{
+					icons.map((item) => {
+						return (
+							<div className='sideMenuBtn' key={item.path}>
+								<div className="icon">
+									<Icon 
+										path={item.path}
+									></Icon>
+								</div>
+								<div className="linkTitle">
+									<span>{item.linkTitle}</span>
+								</div>
+							</div>
+						)
+					})
+				}
 				</div>
 				<div className="footerArea">
 					<hr />
 					{/* 登出 */}
 					<div className='sideMenuBtn'>
 						<div className="icon">
-							<i></i>
+						<Icon 
+							path={mdiLogout}
+						></Icon>
 						</div>
 						<div className="linkTitle">
 							<span>登出</span>

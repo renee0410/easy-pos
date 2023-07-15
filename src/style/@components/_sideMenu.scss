@@ -1,0 +1,22 @@
+.sideMenuArea {
+	width: 227px;
+	height: 100vh;
+	padding: 0 16px;
+	box-shadow: $layoutShadow;
+	
+	.logoArea {
+		text-align: center;
+		padding-top: 48px;
+	}
+	
+	.menuArea {
+		margin-top: 64px;
+
+		// 將登出按鈕推到最下面，(100可視範圍 -  (logoArea高度(83.61px) + menuArea的padding(64px) + footerArea(71px)))
+		height: calc(100vh - 238.61px);
+		// 捲軸
+		overflow-x: hidden;
+    overflow-y: auto;
+	}
+}
+

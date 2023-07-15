@@ -1,6 +1,9 @@
-// 初始化設定
-@import "reset.scss";
-@import "init.scss";
 
-@import "../style/components/sideMenu.scss";
-@import "../style/utilities/button.scss";
+// 初始化設定
+@import "@base/_reset.scss";
+@import "@parm/_variety.scss";
+@import "@base/_init.scss";
+
+
+@import "../style/@components/_sideMenu.scss";
+@import "../style/@utilities/_button.scss";
