@@ -4,7 +4,7 @@ export function SideMenu() {
 
   return (
 		<>
-			<aside>
+			<aside className='sideMenuArea'>
 				<div className="logoArea">
 					<img src={Logo} alt="" />
 				</div>
