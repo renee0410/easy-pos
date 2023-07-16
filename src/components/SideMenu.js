@@ -4,15 +4,12 @@ import Icon from '@mdi/react';
 import { 
 	mdiViewDashboard, // 儀表板
 	mdiFileDocumentOutline, // 菜單
-	mdiHistory,
-	mdiCashRegister,
-	mdiTimetable,
-	mdiCogOutline,
+	mdiHistory, // 訂單管理
+	mdiCashRegister, // 結帳作業
+	mdiTimetable, // 班表
+	mdiCogOutline, // 設定
 	mdiLogout, // 登出
 } from '@mdi/js';
-
-import { useState } from 'react';
-
 
 export function SideMenu() {
 	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);
