@@ -1,0 +1,11 @@
+.layout {
+	display: flex;
+
+	.lBlock {
+		z-index: 100;
+	}
+
+  .rBlock {
+		width: calc(100vw - 227px);
+	}
+}

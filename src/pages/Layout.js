@@ -4,11 +4,16 @@ import { Header } from "../components/Header"
 
 export function Layout() {
 	return (
-		<div>
-			{/* 側邊欄選單 */}
-			{/* <SideMenu></SideMenu> */}
-			{/* Header */}
-			<Header></Header>
+		<div className="layout">
+			<div className="lBlock">
+				{/* 側邊欄選單 */}
+				<SideMenu></SideMenu>
+			</div>
+			<div className="rBlock">
+				{/* Header */}
+				<Header></Header>
+				{/* Contain */}
+			</div>
 		</div>
 	)
 }
