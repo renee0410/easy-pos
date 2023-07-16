@@ -1,6 +1,7 @@
 // icon
 import Icon from '@mdi/react';
 import { mdiMagnify } from '@mdi/js';
+import { mdiAccount } from '@mdi/js';
 
 export function Header() {
   return (
@@ -14,11 +15,14 @@ export function Header() {
 				</div>
 				<div className="userArea">
 					<div className="userContent">
-						<div className="userId"></div>
-						<div className="userName"></div>
+						<span className="userId">000123</span>
+						<br/>
+						<span className="userName">王小明 工讀生</span>
 					</div>
 					<div className="userPhoto">
-						<i></i>
+						<div className="icon">
+							<Icon path={mdiAccount}/>
+						</div>
 					</div>
 				</div>
 			</header>

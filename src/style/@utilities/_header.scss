@@ -17,11 +17,11 @@ header {
 			border: 0;
 			background-color: $secondary;
 			box-shadow: $shadow;
-		}
-
-		input::placeholder {
-			color: $icon;
 			padding-left: 16px;
+
+			&::placeholder {
+				color: $icon;
+			}
 		}
 
 		.icon {
@@ -38,5 +38,38 @@ header {
 	// userArea區塊
 	.userArea {
 		width: 400px;
+		padding: 16px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center; 
+
+		.userContent {
+			text-align: right;
+		}
+
+		.userId, .userName{
+			font-size: 0.875rem;
+			line-height: 20px;
+		}
+		
+		.userPhoto {
+			position: relative;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			margin: 0 8px 0 24px;
+			background-color: $secondary;
+			box-shadow: $shadow;
+
+			.icon {
+				width: 30px;
+				height: 30px;
+				color: $icon;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+		}
 	}
 }
