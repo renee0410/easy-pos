@@ -1,0 +1,18 @@
+// 
+.menuPage {
+		display: flex;
+	
+	.productListArea {
+		width: calc(100% - 400px);
+
+		.tabArea {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow: auto;
+		}
+	}
+
+	.cartArea {
+	width: 400px;
+	}
+}
