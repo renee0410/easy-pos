@@ -9,11 +9,11 @@
 	.icon {
 		width: 30px;
 		height: 30px;
-		color: $icon;
+		color: $secondary;
 	}
 	
 	.linkTitle > span{      // 父層為class linkTitle的所有span標籤
 		margin-left: 24px;
-		color: $icon;
+		color: $secondary;
 	}
 }

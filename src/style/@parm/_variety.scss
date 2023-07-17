@@ -3,8 +3,6 @@ $fontSizeDefault: 1rem;
 
 // 文字顏色
 $fontDefault: #656C71;
-$icon: #BCBCBC;
-$smallLetter: #9EA3A9;
 $fontLight: #FFFCFC;
 
 
@@ -13,7 +11,8 @@ $layoutShadow: 0 1px 6px rgba(0, 0, 0, .15);
 $shadow: 0 2px 4px rgba(0, 0, 0, .16);    // 除了layout以外都使用這個shadow
 
 // 固定色
-$secondary: #F1F6F7;
+$secondary: #BCBCBC;
+$light: #F1F6F7;
 $bgc: #FAFBFD;
 $gray: #DEDDDD;
 $white: #fff;

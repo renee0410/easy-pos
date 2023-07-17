@@ -16,19 +16,19 @@ header {
 			height: 100%;
 			border-radius: 10px;
 			border: 0;
-			background-color: $secondary;
+			background-color: $light;
 			box-shadow: $shadow;
 			padding-left: 16px;
 
 			&::placeholder {
-				color: $icon;
+				color: $secondary;
 			}
 		}
 
 		.icon {
 			width: 32px;
 			height: 32px;
-			color: $icon;
+			color: $secondary;
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
@@ -59,13 +59,13 @@ header {
 			height: 48px;
 			border-radius: 50%;
 			margin: 0 8px 0 24px;
-			background-color: $secondary;
+			background-color: $light;
 			box-shadow: $shadow;
 
 			.icon {
 				width: 30px;
 				height: 30px;
-				color: $icon;
+				color: $secondary;
 				position: absolute;
 				top: 50%;
 				left: 50%;
