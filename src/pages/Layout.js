@@ -1,7 +1,7 @@
+import { Outlet } from "react-router-dom"
+
 import { SideMenu } from "../components/SideMenu"
 import { Header } from "../components/Header"
-
-// 測試
 import { Tab } from "../components/Button"
 
 
@@ -15,7 +15,8 @@ export function Layout() {
 			<div className="rBlock">
 				{/* Header */}
 				<Header></Header>
-				{/* Contain */}
+				{/* Main */}
+				<Outlet></Outlet>
 			</div>
 		</div>
 	)
