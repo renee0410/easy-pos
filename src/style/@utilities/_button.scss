@@ -1,4 +1,4 @@
-// sideMenuBtn
+// 側邊欄選單按鈕
 .sideMenuBtn {
 	display: flex;
 	align-items: center;
@@ -12,7 +12,7 @@
 		color: $icon;
 	}
 	
-	.linkTitle > span{      // 父曾為class linkTitle的所有span標籤
+	.linkTitle > span{      // 父層為class linkTitle的所有span標籤
 		margin-left: 24px;
 		color: $icon;
 	}
