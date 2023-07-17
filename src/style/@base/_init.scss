@@ -3,6 +3,21 @@
 	box-sizing: border-box;
 	color: $fontDefault;
 	font-size: $fontSizeDefault;
+
+	// scrollBar樣式
+	&::-webkit-scrollbar{
+		height: 8px;
+		width: 8px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $scrollbarTrack;
+		border-radius: 10px;
+		margin: 50px 130px;
+	}
+	&::-webkit-scrollbar-thumb{
+		border-radius: 10px;
+		background-color: $scrollbarThumb; 
+}
 }
 
 body {
@@ -13,3 +28,4 @@ hr {
 	border: 0;
 	border-top: 1px solid $gray;
 }
+
