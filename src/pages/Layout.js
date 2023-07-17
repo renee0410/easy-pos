@@ -1,6 +1,9 @@
 import { SideMenu } from "../components/SideMenu"
 import { Header } from "../components/Header"
 
+// 測試
+import { Tab } from "../components/Button"
+
 
 export function Layout() {
 	return (

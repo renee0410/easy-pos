@@ -17,3 +17,20 @@
 		color: $secondary;
 	}
 }
+
+// 大頁籤按鈕
+.tab {
+	padding: 10px 32px;
+	border-radius: 10px;
+	background-color: $bgc;
+	border: 2px solid $primary;
+	color: $secondary;
+	box-shadow: $shadow;
+
+	&:active {
+		background-color: $primary;
+		border: 0;
+		color: $fontLight;
+	}
+}
+

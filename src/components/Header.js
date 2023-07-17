@@ -4,7 +4,7 @@ import { mdiMagnify } from '@mdi/js';
 import { mdiAccount } from '@mdi/js';
 
 export function Header() {
-  return (
+	return (
 		<>
 			<header>
 				<div className="searchBar">
