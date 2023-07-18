@@ -118,7 +118,7 @@ export function MenuPage() {
 					{
 						tabListData.map((item) => {
 							return (
-								<button className="tab" key={item.title}>{item.title}</button>
+								<button className="tabStyle" key={item.title}>{item.title}</button>
 							)
 						})
 					}

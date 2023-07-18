@@ -1,4 +1,4 @@
-* :not(.icon *){
+* {
 	position: relative;
 	box-sizing: border-box;
 	color: $fontDefault;
@@ -17,7 +17,7 @@
 	&::-webkit-scrollbar-thumb{
 		border-radius: 10px;
 		background-color: $scrollbarThumb; 
-}
+	}
 }
 
 body {
@@ -30,3 +30,9 @@ hr {
 	border-top: 1px solid $gray;
 }
 
+button {
+  background-color: $bgc;
+  color: $secondary;
+	box-shadow: $shadow;
+  white-space: nowrap;
+}

@@ -7,25 +7,23 @@
 	.icon {
 		width: 30px;
 		height: 30px;
-		color: $secondary;
-	}
-	
-	.linkTitle > span{      // 父層為class linkTitle的所有span標籤
-		margin-left: 24px;
-		color: $secondary;
-	}
-}
+
+    * {
+      color: $secondary;  // *代表icon裡面的<svg>、<path>
+    }
+  }
+  .linkTitle > span{      // 父層為class linkTitle的所有span標籤
+    margin-left: 24px;
+    color: $secondary;
+  }
+}   
 
 // 頁籤按鈕
-.tab {
+.tabStyle {
 	padding: 10px 32px;
 	border-radius: 10px;
-	background-color: $bgc;
 	border: 2px solid $primary;
-	color: $secondary;
-	box-shadow: $shadow;
 	margin: 0 16px 8px 0; 
-	white-space: nowrap;
 
 	&:active {
 		background-color: $primary;
@@ -33,3 +31,55 @@
 	}
 }
 
+// 小按鈕 btnSm
+.btnSmStyle {
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 1px solid $secondary;
+  font-size: 0.875rem;
+
+  &:active {
+    background-color: $primary;
+		color: $fontLight;
+  }
+}
+
+// 大按鈕 btnLg
+.BtnLgStyle {
+  padding: 8px 72px;
+  border-radius: 10px;
+  
+  // 確定、結帳樣式
+  &.BtnLgPrimary {
+    background-color: $primary;
+    color: $fontLight;
+    border: 1px solid $primary;
+  }
+
+  // 返回、取消樣式
+  &.BtnLgSecondary{
+    border: 1px solid $secondary;
+  }
+}
+
+// 修改按鈕
+.reviseBtnStyle,.deleteBtnStyle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $white;
+  box-shadow: $shadow;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    * {
+      color: $primary;
+    }
+  }
+}
