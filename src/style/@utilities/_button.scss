@@ -46,19 +46,19 @@
   }
 
   // 大按鈕樣式
-  &.BtnLg {
+  &.btnLg {
     padding: 8px 72px;
     border-radius: 10px;
     
     // 確定、結帳樣式
-    &.BtnLgPrimary {
+    &.btnLgPrimary {
       background-color: $primary;
       color: $fontLight;
       border: 1px solid $primary;
     }
   
     // 返回、取消樣式
-    &.BtnLgSecondary{
+    &.btnLgSecondary{
       border: 1px solid $secondary;
     }
   }

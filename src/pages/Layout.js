@@ -16,7 +16,6 @@ export function Layout() {
 				{/* Header */}
 				<Header></Header>
 				{/* Main */}
-        <Button></Button>
 				<Outlet></Outlet>
 			</div>
 		</div>

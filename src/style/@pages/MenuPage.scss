@@ -59,37 +59,124 @@
   // 右側購物車區塊
 	.cartArea {
 	  width: 400px;
+    height: calc(100vh - 102px);  // 102px = 上下padding:16 + header:70px
     border-radius: 10px;
     box-shadow: $layoutShadow;
 
-    h3 {
-      margin-bottom: 16px;
-      text-align: center;
-    }
+    // 
+    .cartTop {
+      padding: 16px;
+      height: 164px;
 
-    // 上方訂單資訊區塊
-    .info {
-      display: flex;
-      justify-content: space-between;
-
-      * {
-        color: $secondary;
-        font-size: 0.875rem;
+      h3 {
+        margin-bottom: 16px;
+        text-align: center;
       }
-    }
-
-    // 內用外帶按鈕區塊
-    .togoBtn {
-      margin-top: 16px;
-      display: flex;
-      justify-content: flex-end;
-
-      .btn {
-        margin-left: 8px;
+  
+      // 上方訂單資訊區塊
+      .info {
+        display: flex;
+        justify-content: space-between;
+  
+        * {
+          color: $secondary;
+          font-size: 0.875rem;
+        }
+      }
+  
+      // 內用外帶按鈕區塊
+      .togoBtn {
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+  
+        .btn {
+          margin-left: 8px;
+        }
       }
     }
 
     // 購物車清單區塊
+    .cartList {
+      height: calc(100% - 302px); // 302px = cartTop:164px + cartBottom:138px
+      overflow: auto;
+      padding: 0 16px 0 16px;
 
+      .cartProduct {
+      margin-bottom: 16px;
+      padding: 8px;
+      background-color: $light;
+      border-radius: 10px;
+      box-shadow: $shadow;
+      display: flex;
+      justify-content: space-between;
+      
+      // 左邊區塊(標題、詳細內容、數量)
+      .lCartProduct {
+        padding: 0 4px 0 4px;
+        width: calc(100% - 96px);
+        * {
+          display: block;
+        }
+
+        .productTitle {
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+        
+        .productDetail {
+          font-size: 0.875rem;
+          margin-bottom: 8px;
+        }
+      }
+      
+      // 右邊區塊(修改刪除按鈕、金額)
+      .rCartProduct {
+        width: 96px;
+        margin-right: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .btn {
+          margin-left: 8px;
+        }
+        .modifyBtn,.productPrice {
+          align-self: flex-end;
+        }
+        .productPrice {
+          font-weight: bold;
+          font-size: 1.125rem;
+        }
+      }
+    }
+    }
+
+    // 下方總金額及結帳按鈕區塊
+    .cartBottom {
+      padding: 16px;
+      height: 138px;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+
+      .totalAmountArea {
+        padding: 8px 0 16px 0;
+        display: flex;
+        justify-content: space-between;
+
+        > span {
+          font-weight: bold;
+          font-size: 1.25rem;
+        }
+      }
+
+      .payBtnArea {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+    }
+    
 	}
 }
