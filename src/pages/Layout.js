@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 
 import { SideMenu } from "../components/SideMenu"
 import { Header } from "../components/Header"
-import { Tab } from "../components/Button"
+import { Button } from "../components/Button"
 
 
 export function Layout() {
@@ -16,6 +16,7 @@ export function Layout() {
 				{/* Header */}
 				<Header></Header>
 				{/* Main */}
+        <Button></Button>
 				<Outlet></Outlet>
 			</div>
 		</div>

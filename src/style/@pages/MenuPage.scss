@@ -14,50 +14,52 @@
 			overflow: auto;
 		}
 
-  // 下方產品列表區塊
-  .productList {
-    margin-top: 40px;
-    height: calc(100% - 102px);  // 102px: 頁籤高度＋margin-top:64px
-    overflow-y: auto;
-    padding-right: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    
-    .productCard {
-      margin-bottom: 8px;
-      cursor: pointer;
+    // 下方產品列表區塊
+    .productList {
+      margin: 40px 8px 0 0;
+      height: calc(100% - 102px);  // 102px: 頁籤高度＋margin-top:64px
+      overflow-y: auto;
+      padding-right: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
+      .productCard {
+        margin-bottom: 8px;
+        cursor: pointer;
 
-      // 圖片外框
-      .imgBoxFit {
-        width: 180px;
-        height: 180px;
-        border-radius: 8px; /* 設置弧度 */
-        overflow: hidden; /* 隐藏超出邊界的内容 */
-    
-        img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        // 圖片外框
+        .imgBoxFit {
+          width: 180px;
+          height: 180px;
+          border-radius: 8px; /* 設置弧度 */
+          overflow: hidden; /* 隐藏超出邊界的内容 */
+      
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
-      }
 
-      .cardBody {
-        margin-top: 16px;
+        .cardBody {
+          margin-top: 16px;
 
-        .cardTitle,.cardPrice {
-          display: block;
-          text-align: center;
-          margin-bottom: 8px;
+          .cardTitle,.cardPrice {
+            display: block;
+            text-align: center;
+            margin-bottom: 8px;
+          }
         }
       }
     }
   }
-    }
 
   // 右側購物車區塊
 	.cartArea {
-	width: 400px;
+	  width: 400px;
+    border-radius: 10px;
+    box-shadow: $layoutShadow;
 	}
 }

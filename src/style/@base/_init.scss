@@ -12,7 +12,7 @@
 	&::-webkit-scrollbar-track {
 		background-color: $scrollbarTrack;
 		border-radius: 10px;
-		margin: 50px 130px;
+		margin: 50px 120px;
 	}
 	&::-webkit-scrollbar-thumb{
 		border-radius: 10px;
@@ -20,6 +20,7 @@
 	}
 }
 
+// 背景色
 body {
 	background: $bgc;
 	height: 100%;
@@ -30,7 +31,28 @@ hr {
 	border-top: 1px solid $gray;
 }
 
-button {
+// h1-h6樣式
+h1 {
+	font-size: $fontSizeDefault * 2.5;
+}
+h2 {
+	font-size: $fontSizeDefault * 2;
+}
+h3 {
+	font-size: $fontSizeDefault * 1.75;
+}
+h4 {
+	font-size: $fontSizeDefault * 1.5;
+}
+h5 {
+	font-size: $fontSizeDefault * 1.25;
+}
+h6 {
+	font-size: $fontSizeDefault;
+}
+
+// btn預設樣式
+.btn {
   background-color: $bgc;
   color: $secondary;
 	box-shadow: $shadow;

@@ -1,3 +1,10 @@
+import { Button } from "../components/Button";
+
+import Icon from '@mdi/react';
+import { 
+	mdiLeadPencil, // 修改
+  mdiTrashCan  // 刪除
+} from '@mdi/js';
 
 export function MenuPage() {
 	const tabListData = [
@@ -118,7 +125,7 @@ export function MenuPage() {
 					{
 						tabListData.map((item) => {
 							return (
-								<button className="tabStyle" key={item.title}>{item.title}</button>
+								<button className="btn tabStyle" key={item.title}>{item.title}</button>
 							)
 						})
 					}
@@ -144,7 +151,22 @@ export function MenuPage() {
         </div>
 			</div>
 			{/* 右側購物車區塊 */}
-			<div className="cartArea"></div>
+			<div className="cartArea">
+        <div className="container">
+          <h3>清單(3)</h3>
+          <hr/>
+          <div className="info"></div>
+          <hr />
+          <Button
+            style="btnMd"
+            text="內用"
+          ></Button>
+          <Button
+            style="btnSm"
+            iconPath={mdiLeadPencil}
+          ></Button>
+        </div>
+      </div>
 		</div>
 	)
 }

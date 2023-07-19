@@ -5,28 +5,47 @@ import {
   mdiTrashCan  // 刪除
 } from '@mdi/js';
 
+export function Button({ style = 'btnSm', iconPath, text }) {
+  return (
+    <button className= {`btn ${style}`}>
+      { 
+        iconPath ? 
+          (
+            <div className="icon">
+              <Icon path={iconPath}></Icon>
+            </div>
+          ) :
+          ''
+      }
+      { 
+        text ? (text) : ''
+      }
+    </button>
+  )
+}
+
 // 小按鈕 btnSm
 export function BtnSm() {
   return (
-    <button className="btnSmStyle">內用</button>
+    <button className="btn btnSmStyle "></button>
   )
 }
 
 // 大按鈕 btnLg
 export function BtnLg() {
   return (
-    <button className="BtnLgStyle BtnLgPrimary">返回</button>
+    <button className="btn BtnLgStyle BtnLgPrimary">返回</button>
   )
 }
 
 // 修改按鈕
 export function ReviseBtn() {
   return (
-    <div className='reviseBtnStyle'>
+    <button className='reviseBtnStyle'>
       <div className="icon">
         <Icon path={mdiLeadPencil}></Icon>
       </div>
-    </div>
+    </button>
   )
 }
 
