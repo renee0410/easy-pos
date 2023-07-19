@@ -22,10 +22,10 @@
       padding-right: 8px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       
       .productCard {
-        margin-bottom: 8px;
+        margin: 0 16px 8px 0;
         cursor: pointer;
 
         // 圖片外框
@@ -61,5 +61,35 @@
 	  width: 400px;
     border-radius: 10px;
     box-shadow: $layoutShadow;
+
+    h3 {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    // 上方訂單資訊區塊
+    .info {
+      display: flex;
+      justify-content: space-between;
+
+      * {
+        color: $secondary;
+        font-size: 0.875rem;
+      }
+    }
+
+    // 內用外帶按鈕區塊
+    .togoBtn {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+
+      .btn {
+        margin-left: 8px;
+      }
+    }
+
+    // 購物車清單區塊
+
 	}
 }
