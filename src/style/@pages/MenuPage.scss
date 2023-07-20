@@ -24,7 +24,6 @@
       grid-template-columns: repeat(3, 1fr); // 平均三等份
       gap: 16px;  // 上下左右間距16px
 
-      
       .productCard {
         cursor: pointer;
         width: 100%;
@@ -38,6 +37,10 @@
           height: 200px;
           border-radius: 8px; /* 設置弧度 */
           overflow: hidden; /* 隐藏超出邊界的内容 */
+          @include pad{
+            width: 175px;
+            height: 175px;
+          }
       
           img {
             display: block;

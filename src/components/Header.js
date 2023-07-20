@@ -1,7 +1,10 @@
 // icon
 import Icon from '@mdi/react';
-import { mdiMagnify } from '@mdi/js';
-import { mdiAccount } from '@mdi/js';
+import { 
+  mdiMagnify, 
+  mdiAccount,
+  mdiMenu,
+} from '@mdi/js';
 
 export function Header() {
 	return (

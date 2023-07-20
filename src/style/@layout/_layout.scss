@@ -1,16 +1,34 @@
+// 平板尺寸
+@mixin pad{
+  @media(max-width:1024px){
+    @content;
+  }
+}
+
 .layout {
 	display: flex;
 
 	.lBlock {
 		z-index: 100;
+    position: fixed;
+    top: 0;
+    @include pad{
+      margin-left: -227px;
+    }
 	}
 
   .rBlock {
 		width: calc(100vw - 227px);
+    margin-left: 227px;
     height: 100vh;
+    @include pad{
+      width: 100vw;
+      margin-left: 0;
+    }
 	}
 }
 
 .container {
 	padding: 16px;
 }
+
