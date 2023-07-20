@@ -20,18 +20,22 @@
       height: calc(100% - 102px);  // 102px: 頁籤高度＋margin-top:64px
       overflow-y: auto;
       padding-right: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); // 平均三等份
+      gap: 16px;  // 上下左右間距16px
+
       
       .productCard {
-        margin: 0 16px 8px 0;
         cursor: pointer;
+        width: 100%;
+        height: 100%;
+        
 
         // 圖片外框
         .imgBoxFit {
-          width: 180px;
-          height: 180px;
+          margin: auto;  // 置中
+          width: 200px;
+          height: 200px;
           border-radius: 8px; /* 設置弧度 */
           overflow: hidden; /* 隐藏超出邊界的内容 */
       
