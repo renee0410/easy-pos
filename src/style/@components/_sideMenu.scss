@@ -5,6 +5,32 @@
 	padding: 0 16px;
 	box-shadow: $layoutShadow;
 	
+  .sideMenuSwitch {
+    width: 30px;
+    height: 60px;
+    border-radius: 0 10px 10px 0;
+    background-color: $light;
+    opacity: 0.6;
+    box-shadow: $layoutShadow;
+    // 垂直置中
+    display: flex;
+    align-items: center;
+    // 定位
+    position: absolute;
+    top: 50%;
+    right: -20%;
+    transform: translate(-50%);
+
+    .icon {
+      width: 30px;
+      height: 30px;
+
+      * {
+        color: $primary;
+      }
+    }
+  }
+
 	.logoArea {
 		text-align: center;
 		padding-top: 48px;

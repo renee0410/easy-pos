@@ -9,6 +9,8 @@ import {
 	mdiTimetable, // 班表
 	mdiCogOutline, // 設定
 	mdiLogout, // 登出
+  mdiChevronDoubleLeft, // 向左箭頭
+  mdiChevronDoubleRight, // 向右箭頭
 } from '@mdi/js';
 
 export function SideMenu() {
@@ -43,6 +45,13 @@ export function SideMenu() {
   return (
 		<>
 			<aside className="sideMenuArea">
+        <div className="sideMenuSwitch">
+          <div className="icon">
+            <Icon
+              path={mdiChevronDoubleLeft}
+            ></Icon>
+          </div>
+        </div>
 				<div className="logoArea">
 					<img src={Logo} alt="" />
 				</div>
