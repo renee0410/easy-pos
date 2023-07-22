@@ -111,7 +111,7 @@ export function MenuPage() {
   ];
 
   // 儲存彈跳視窗顯示或隱藏
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   return (
     <>
@@ -138,8 +138,8 @@ export function MenuPage() {
                       <img src={require(`../assets/img/products/${item.img}`)} alt="" />
                     </div>
                     <div className="cardBody">
-                      <span className="cardTitle">{item.title}</span>
-                      <span className="cardPrice">{`$${item.price}`}</span>
+                      <h6 className="cardTitle">{item.title}</h6>
+                      <h6 className="cardPrice">{`$${item.price}`}</h6>
                     </div>
                   </div>
                 )
@@ -152,11 +152,11 @@ export function MenuPage() {
         <div className="cartArea">
             {/* 上方訂單資訊區塊 */}
             <div className="cartTop">
-            <h3>清單(3)</h3>
+            <h1>清單(3)</h1>
             <hr/>
             <div className="info">
-              <div className="orderId">訂單編號＃01</div>
-              <div className="orderDate">2023-04-10 19:00:00</div>
+              <span className="orderId">訂單編號＃01</span>
+              <span className="orderDate">2023-04-10 19:00:00</span>
             </div>
             <hr />
             {/* 內用外帶按鈕區塊 */}
@@ -191,7 +191,7 @@ export function MenuPage() {
                       iconPath={mdiTrashCan}
                     ></Button>
                   </div>
-                  <div className="productPrice">$40</div>
+                  <h5 className="productPrice">$40</h5>
                 </div>
               </div>
             </div>
@@ -199,8 +199,8 @@ export function MenuPage() {
             <div className="cartBottom">
               <hr/>
               <div className="totalAmountArea">
-                <span>Total</span>
-                <span>$130</span>
+                <h4>Total</h4>
+                <h4>$130</h4>
               </div>
               <div className="payBtnArea">
                 <Button
@@ -218,7 +218,16 @@ export function MenuPage() {
       <Popup
         showPopup={showPopup}
         setShowPopup={setShowPopup}
-      ></Popup>
+      >
+        {/* 上方特製按鈕區塊 */}
+        {/* 備註欄區塊 */}
+        <div className="remarkArea">
+          <label htmlFor="remark">備註</label>
+          {/* <br /> */}
+          <textarea name="" id="remark" cols="30" rows="5" placeholder="請輸入備註"></textarea>
+        </div>
+        {/* 計數器區塊 */}
+      </Popup>
     </>
 		
 	)

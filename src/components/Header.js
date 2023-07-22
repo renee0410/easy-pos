@@ -19,7 +19,7 @@ export function Header() {
 				<div className="userArea">
 					<div className="userContent">
 						<span className="userId">000123</span>
-						<br/>
+            <br />
 						<span className="userName">王小明 工讀生</span>
 					</div>
 					<div className="userPhoto">

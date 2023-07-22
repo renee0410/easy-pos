@@ -66,7 +66,7 @@ export function SideMenu() {
 									></Icon>
 								</div>
 								<div className="linkTitle">
-									<span>{item.linkTitle}</span>
+									<h6>{item.linkTitle}</h6>
 								</div>
 							</div>
 						)
@@ -83,7 +83,7 @@ export function SideMenu() {
 						></Icon>
 						</div>
 						<div className="linkTitle">
-							<span>登出</span>
+							<h6>登出</h6>
 						</div>
 					</div>
 				</div>

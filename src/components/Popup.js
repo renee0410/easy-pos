@@ -1,7 +1,6 @@
 import { Button } from "./Button";
-import { useContext, useState } from "react";
 
-export function Popup({ showPopup, setShowPopup }) {
+export function Popup({ showPopup, setShowPopup, children }) {
 
   // 關閉彈跳視窗
   function cancelPopup() {
@@ -20,10 +19,12 @@ export function Popup({ showPopup, setShowPopup }) {
                 <div className="container">
                   {/* 標題區塊 */}
                   <div className="popupTop">
-                    <span className="popupTitle">原味蛋餅 $25</span>
+                    <h3 className="popupTitle">原味蛋餅 $25</h3>
                   </div>
                   {/* 中間內容區塊 */}
-                  <div className="popupContent"></div>
+                  <div className="popupContent">
+                    {children}
+                  </div>
                   {/* 底部按鈕區塊 */}
                   <div className="popupBottom">
                     <Button
@@ -34,7 +35,7 @@ export function Popup({ showPopup, setShowPopup }) {
                     <Button
                       style="btnLg btnLgPrimary"
                       text="送出"
-                    ></Button>
+                    ></Button>         
                   </div>
                 </div>
               </div>

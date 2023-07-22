@@ -16,7 +16,7 @@
 	}
 	&::-webkit-scrollbar-thumb{
 		border-radius: 10px;
-		background-color: $scrollbarThumb; 
+		background-color: $scrollbarThumb;
 	}
 }
 
@@ -32,25 +32,31 @@ hr {
 	border-top: 1px solid $gray;
 }
 
-// h1-h6樣式
+// 文字大小
 h1 {
-	font-size: $fontSizeDefault * 2.5;
+	font-size: $fontSizeDefault + $fontSpace * 5; // 26
 }
 h2 {
-	font-size: $fontSizeDefault * 2;
+	font-size: $fontSizeDefault + $fontSpace * 4; // 24
 }
 h3 {
-	font-size: $fontSizeDefault * 1.75;
+	font-size: $fontSizeDefault + $fontSpace * 3; // 22
 }
 h4 {
-	font-size: $fontSizeDefault * 1.5;
+	font-size: $fontSizeDefault + $fontSpace * 2;  //20
 }
 h5 {
-	font-size: $fontSizeDefault * 1.25;
+	font-size: $fontSizeDefault + $fontSpace; // 18
 }
 h6 {
-	font-size: $fontSizeDefault;
+	font-size: $fontSizeDefault;  // 16
 }
+span {
+	font-size: $fontSizeDefault - $fontSpace;  //14
+}
+p {
+	font-size: $fontSizeDefault - $fontSpace * 2
+} // 12
 
 // btn預設樣式
 .btn {

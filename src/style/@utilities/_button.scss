@@ -12,7 +12,7 @@
       color: $secondary;  // *代表icon裡面的<svg>、<path>
     }
   }
-  .linkTitle > span{      // 父層為class linkTitle的所有span標籤
+  .linkTitle > h6{      // 父層為class linkTitle的所有h6標籤
     margin-left: 24px;
     color: $secondary;
   }
@@ -37,7 +37,6 @@
     padding: 5px 16px;
     border-radius: 20px;
     border: 1px solid $secondary;
-    font-size: 0.875rem;
 
     &:active {
       background-color: $primary;
