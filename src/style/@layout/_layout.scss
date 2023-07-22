@@ -12,7 +12,7 @@
 		z-index: 100;
     position: fixed;
     top: 0;
-    @include pad{
+    @include pad {
       margin-left: -227px;
     }
 	}
@@ -21,7 +21,7 @@
 		width: calc(100vw - 227px);
     margin-left: 227px;
     height: 100vh;
-    @include pad{
+    @include pad {
       width: 100vw;
       margin-left: 0;
     }

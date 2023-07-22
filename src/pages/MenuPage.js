@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 import { Button } from "../components/Button";
+import { Popup } from "../components/Popup";
+
 // icon
 import { 
 	mdiLeadPencil, // 修改
@@ -6,6 +10,7 @@ import {
 } from '@mdi/js';
 
 export function MenuPage() {
+
 	const tabListData = [
 		{
 			title: '全部',
@@ -105,317 +110,116 @@ export function MenuPage() {
     },
   ];
 
-  return (
-		<div className="container menuPage">
-        {/* 左側產品列表區塊 */}
-			<div className="productListArea">
-				{/* 頁籤區塊 */}
-				<div className="tabArea">
-					{
-						tabListData.map((item) => {
-							return (
-								<button className="btn tabStyle" key={item.title}>{item.title}</button>
-							)
-						})
-					}
-				</div>
-        {/* 產品區塊 */}
-				<div className="productList">
-          {
-            productListData.map((item) => {
-              return (
-                <div className="productCard" key={item.title}>
-                  <div className="imgBoxFit">
-                    <img src={require(`../assets/img/products/${item.img}`)} alt="" />
-                  </div>
-                  <div className="cardBody">
-                    <span className="cardTitle">{item.title}</span>
-                    <span className="cardPrice">{`$${item.price}`}</span>
-                  </div>
-                </div>
-              )
-            })
-          }
-          
-        </div>
-			</div>
-			{/* 右側購物車區塊 */}
-			<div className="cartArea">
-          {/* 上方訂單資訊區塊 */}
-          <div className="cartTop">
-          <h3>清單(3)</h3>
-          <hr/>
-          <div className="info">
-            <div className="orderId">訂單編號＃01</div>
-            <div className="orderDate">2023-04-10 19:00:00</div>
-          </div>
-          <hr />
-          {/* 內用外帶按鈕區塊 */}
-          <div className="togoBtn">
-            <Button
-              style="btnMd"
-              text="內用"
-            ></Button>
-            <Button
-              style="btnMd"
-              text="外帶"
-            ></Button>
-          </div>
-          </div>
-          {/* 購物車清單區塊 */}
-          <div className="cartList">
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
+  // 儲存彈跳視窗顯示或隱藏
+  const [showPopup, setShowPopup] = useState(false);
 
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
-            <div className="cartProduct">
-              <div className="lCartProduct">
-                <span className="productTitle">火腿蛋餅</span>
-                <span className="productDetail">不要醬油+$0</span>
-                <span className="productNum">x1</span>
-              </div>
-              <div className="rCartProduct">
-                {/* 修改刪除按鈕區塊 */}
-                <div className="modifyBtn">
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiLeadPencil}
-                  ></Button>
-                  <Button
-                    style="btnSm"
-                    iconPath={mdiTrashCan}
-                  ></Button>
-                </div>
-                <div className="productPrice">$40</div>
-              </div>
-            </div>
+  return (
+    <>
+      <div className="container menuPage">
+        {/* 左側產品列表區塊 */}
+        <div className="productListArea">
+          {/* 頁籤區塊 */}
+          <div className="tabArea">
+            {
+              tabListData.map((item) => {
+                return (
+                  <button className="btn tabStyle" key={item.title}>{item.title}</button>
+                )
+              })
+            }
           </div>
-          {/* 下方總金額及結帳按鈕區塊 */}
-          <div className="cartBottom">
+          {/* 產品區塊 */}
+          <div className="productList">
+            {
+              productListData.map((item) => {
+                return (
+                  <div className="productCard" key={item.title} onClick={ () => setShowPopup(true) }>  
+                    <div className="imgBoxFit">
+                      <img src={require(`../assets/img/products/${item.img}`)} alt="" />
+                    </div>
+                    <div className="cardBody">
+                      <span className="cardTitle">{item.title}</span>
+                      <span className="cardPrice">{`$${item.price}`}</span>
+                    </div>
+                  </div>
+                )
+              })
+            }
+            
+          </div>
+        </div>
+        {/* 右側購物車區塊 */}
+        <div className="cartArea">
+            {/* 上方訂單資訊區塊 */}
+            <div className="cartTop">
+            <h3>清單(3)</h3>
             <hr/>
-            <div className="totalAmountArea">
-              <span>Total</span>
-              <span>$130</span>
+            <div className="info">
+              <div className="orderId">訂單編號＃01</div>
+              <div className="orderDate">2023-04-10 19:00:00</div>
             </div>
-            <div className="payBtnArea">
+            <hr />
+            {/* 內用外帶按鈕區塊 */}
+            <div className="togoBtn">
               <Button
-                style="btnLg btnLgSecondary"
-                text="暫存"
+                style="btnMd"
+                text="內用"
               ></Button>
               <Button
-                style="btnLg btnLgPrimary"
-                text="結帳"
+                style="btnMd"
+                text="外帶"
               ></Button>
             </div>
-          </div>
-      </div>
-		</div>
+            </div>
+            {/* 購物車清單區塊 */}
+            <div className="cartList">
+              <div className="cartProduct">
+                <div className="lCartProduct">
+                  <span className="productTitle">火腿蛋餅</span>
+                  <span className="productDetail">不要醬油+$0</span>
+                  <span className="productNum">x1</span>
+                </div>
+                <div className="rCartProduct">
+                  {/* 修改刪除按鈕區塊 */}
+                  <div className="modifyBtn">
+                    <Button
+                      style="btnSm"
+                      iconPath={mdiLeadPencil}
+                    ></Button>
+                    <Button
+                      style="btnSm"
+                      iconPath={mdiTrashCan}
+                    ></Button>
+                  </div>
+                  <div className="productPrice">$40</div>
+                </div>
+              </div>
+            </div>
+            {/* 下方總金額及結帳按鈕區塊 */}
+            <div className="cartBottom">
+              <hr/>
+              <div className="totalAmountArea">
+                <span>Total</span>
+                <span>$130</span>
+              </div>
+              <div className="payBtnArea">
+                <Button
+                  style="btnLg btnLgSecondary"
+                  text="暫存"
+                ></Button>
+                <Button
+                  style="btnLg btnLgPrimary"
+                  text="結帳"
+                ></Button>
+              </div>
+            </div>
+        </div>
+		  </div>
+      <Popup
+        showPopup={showPopup}
+        setShowPopup={setShowPopup}
+      ></Popup>
+    </>
+		
 	)
 }

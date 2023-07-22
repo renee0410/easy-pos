@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 
 import { SideMenu } from "../components/SideMenu"
 import { Header } from "../components/Header"
-import { Button } from "../components/Button"
+import { Popup } from "../components/Popup"
 
 
 export function Layout() {

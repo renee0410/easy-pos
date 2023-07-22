@@ -1,9 +1,9 @@
 // icons
 import Icon from '@mdi/react';
 
-export function Button({ style, iconPath, text }) {
+export function Button({ style, iconPath, text, onClick }) {
   return (
-    <button className= {`btn ${style}`}>
+    <button className= {`btn ${style}`} onClick={onClick}>
       { 
         iconPath ? 
           (

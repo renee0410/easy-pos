@@ -1,0 +1,47 @@
+.mask {
+  background-color: $mask;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+}
+
+.popupArea {
+  z-index: 500;
+  width: 400px;
+  max-height: 80vh;  // 最大高度為可是範圍百分之80
+  border-radius: 20px;
+  background-color: $white;
+  // 定位置中
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .container {
+    height: 100%;
+  }
+
+  .popupTop{
+    margin-bottom: 32px;
+    height: 27px;
+    .popupTitle {
+      font-size: 1.375rem;
+      font-weight: bold;
+    }
+  }
+
+  .popupContent {
+    height: calc(100% - 116px);  // 116px:popupTop:27px + popupBottom:41px + margin48px
+    margin-bottom: 16px;
+    overflow: auto;
+  }
+
+  .popupBottom {
+    height: 41px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
