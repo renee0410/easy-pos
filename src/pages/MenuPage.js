@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { Button } from "../components/Button";
 import { Popup } from "../components/Popup";
+import { Counter } from "../components/Counter";
 
 // icon
 import { 
@@ -219,14 +220,26 @@ export function MenuPage() {
         showPopup={showPopup}
         setShowPopup={setShowPopup}
       >
+
         {/* 上方特製按鈕區塊 */}
+        <div className="specialProductArea">
+          <h5>特製</h5>
+          <div className="specialProductBtn">
+            <Button
+              style="btnMd"
+              text="加蛋+$10"
+            ></Button>
+          </div>
+        </div>
         {/* 備註欄區塊 */}
         <div className="remarkArea">
-          <label htmlFor="remark">備註</label>
-          {/* <br /> */}
+          <h5>備註</h5>
           <textarea name="" id="remark" cols="30" rows="5" placeholder="請輸入備註"></textarea>
         </div>
         {/* 計數器區塊 */}
+        <div className="counterArea">
+          <Counter></Counter>
+        </div>
       </Popup>
     </>
 		
