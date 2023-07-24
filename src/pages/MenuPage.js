@@ -153,7 +153,7 @@ export function MenuPage() {
         <div className="cartArea">
             {/* 上方訂單資訊區塊 */}
             <div className="cartTop">
-            <h1>清單(3)</h1>
+            <h2>清單(3)</h2>
             <hr/>
             <div className="info">
               <span className="orderId">訂單編號＃01</span>

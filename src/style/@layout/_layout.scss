@@ -1,6 +1,12 @@
 // 平板尺寸
 @mixin pad{
-  @media(max-width:1024px){
+  @media(min-width: 768px) and (max-width:1024px){
+    @content;
+  }
+}
+// 手機尺寸 
+@mixin mobile{
+  @media(min-width: 320px) and (max-width:768px){
     @content;
   }
 }

@@ -2,6 +2,8 @@
 $fontSizeDefault: 1rem;
 // 文字大小倍率
 $fontSpace: 0.1rem;
+// label文字大小
+$labelFontSize: $fontSizeDefault + $fontSpace;
 
 // 文字顏色
 $fontDefault: #656C71;

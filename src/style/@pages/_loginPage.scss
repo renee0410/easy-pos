@@ -1,0 +1,60 @@
+.loginPage {
+  background-color: $white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+  .lBlock {
+    width: 30%;
+    height: 100vh; 
+    background-color: $primary;
+    display: flex;
+    justify-content: center;
+    @include pad {
+      width: 40%;
+    }
+
+    img {
+      height: 100%;
+      position: absolute;
+      left: 60%;
+    }
+  }
+
+  .rBlock {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include pad {
+      width: 60%;
+    }
+    @include mobile {
+      width: 100%;
+      background-color: $white;
+    }
+
+    .loginBlock {
+      padding: 16px;
+      width: 346px;
+
+      h1 {
+        color: $primary;
+        font-weight: bold;
+        text-align: center;
+      }
+      .loginForm {
+        margin: 16px 0 24px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  
+        .inputContainer {
+          width: 100%;
+          margin-bottom: 24px;
+        }
+      }
+    }
+  
+  }
+}
