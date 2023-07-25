@@ -112,7 +112,7 @@ export function MenuPage() {
   ];
 
   // 儲存彈跳視窗顯示或隱藏
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <>

@@ -13,11 +13,17 @@
     @include pad {
       width: 40%;
     }
+    @include mobile {
+      width: 0%;
+    }
 
     img {
       height: 100%;
       position: absolute;
       left: 60%;
+      @include mobile {
+        width: 0%;
+      }
     }
   }
 
@@ -31,7 +37,6 @@
     }
     @include mobile {
       width: 100%;
-      background-color: $white;
     }
 
     .loginBlock {
