@@ -12,6 +12,8 @@ import {
   mdiChevronDoubleLeft, // 向左箭頭
   mdiChevronDoubleRight, // 向右箭頭
 } from '@mdi/js';
+import { getAuth, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 export function SideMenu() {
 	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);
@@ -41,6 +43,18 @@ export function SideMenu() {
 			linkTitle: '設定',
 		},
 	];
+  // 
+  const navigate = useNavigate(); 
+
+  // 登出功能
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      navigate("/login");
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
 
   return (
 		<>
@@ -76,7 +90,7 @@ export function SideMenu() {
 				<div className="footerArea">
 					<hr />
 					{/* 登出 */}
-					<div className='sideMenuBtn'>
+					<div className='sideMenuBtn' onClick={handleLogout}>
 						<div className="icon">
 						<Icon 
 							path={mdiLogout}
