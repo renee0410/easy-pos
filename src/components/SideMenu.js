@@ -12,8 +12,8 @@ import {
   mdiChevronDoubleLeft, // 向左箭頭
   mdiChevronDoubleRight, // 向右箭頭
 } from '@mdi/js';
-import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from "firebase/auth";
 
 export function SideMenu() {
 	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);

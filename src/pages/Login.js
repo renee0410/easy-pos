@@ -1,11 +1,9 @@
 import { useState } from "react";
 import LoginBg from "../assets/img/LoginBg.svg";
 import { Button } from "../components/Button";
-import { firebaseApp } from "../utils/firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form";
-import { Value } from "sass";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export function Login() {
   // 跳轉頁面
@@ -43,7 +41,7 @@ export function Login() {
         }else {
           alert("信箱格式不正確")
         }
-      })
+      });
   }
   
   return (

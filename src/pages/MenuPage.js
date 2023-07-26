@@ -1,14 +1,15 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
-
 // icon
 import { 
 	mdiLeadPencil, // 修改
   mdiTrashCan  // 刪除
 } from '@mdi/js';
+// firebase
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../utils/firebase";
 
 export function MenuPage() {
 
@@ -110,6 +111,18 @@ export function MenuPage() {
       price: 30,
     },
   ];
+
+
+  // 初始化載入api
+  useEffect(() => {
+    getDocs(collection(db, "products"))
+      .then((doc) => {
+        const productData = doc.docs.map((data) => {
+          return data.data();
+        })
+        console.log(productData);
+      })
+  },[]);
 
   // 儲存彈跳視窗顯示或隱藏
   const [showPopup, setShowPopup] = useState(false);
