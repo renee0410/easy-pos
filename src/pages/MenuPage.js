@@ -170,8 +170,9 @@ export function MenuPage() {
         </div>
 		  </div>
       <Popup
-        showPopup={showPopup}
-        setShowPopup={setShowPopup}
+        showPopup={showPopup}      // 顯示彈窗
+        setShowPopup={setShowPopup}  // 顯示彈窗
+        selectedProduct={selectedProduct}
       >
         {/* 上方特製按鈕區塊 */}
         <div className="specialProductArea">
@@ -179,8 +180,10 @@ export function MenuPage() {
           <div className="specialProductBtn">
             {
               selectedProduct && selectedProduct.options.map((item) => {
+                console.log(item)
                 return (
                   <Button
+                    key={item.option}
                     style="btnMd"
                     text={`${item.option}+$${item.price}`}
                   ></Button>
