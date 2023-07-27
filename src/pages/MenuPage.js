@@ -58,7 +58,7 @@ export function MenuPage() {
       })
   },[]);
   // console.log(productList)
-  console.log(selectedProduct)
+  // console.log(selectedProduct)
 
   return (
     <>
@@ -178,12 +178,15 @@ export function MenuPage() {
           <h5>特製</h5>
           <div className="specialProductBtn">
             {
-              console.log(selectedProduct)
+              selectedProduct && selectedProduct.options.map((item) => {
+                return (
+                  <Button
+                    style="btnMd"
+                    text={`${item.option}+$${item.price}`}
+                  ></Button>
+                )
+              })
             }
-            <Button
-              style="btnMd"
-              text={`加蛋+$10`}
-            ></Button>
           </div>
         </div>
         {/* 備註欄區塊 */}
