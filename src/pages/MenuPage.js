@@ -44,6 +44,8 @@ export function MenuPage() {
   const [ showPopup, setShowPopup ] = useState(false);
   // 儲存所點擊到的商品
   const [ selectedProduct, setSelectedProduct ] = useState(null);
+  // 儲存所點擊到的特製按鈕
+  const [ selectedOption, setSelectedOption] = useState([]);
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -59,6 +61,10 @@ export function MenuPage() {
   },[]);
   // console.log(productList)
   // console.log(selectedProduct)
+  useEffect(() => {
+    console.log(selectedOption)
+  },[selectedOption])
+  
 
   return (
     <>
@@ -180,12 +186,26 @@ export function MenuPage() {
           <div className="specialProductBtn">
             {
               selectedProduct && selectedProduct.options.map((item) => {
-                console.log(item)
                 return (
                   <Button
                     key={item.option}
-                    style="btnMd"
+                    style={`btnMd ${selectedOption.indexOf(item) !== -1 ? "active" : ""}`}  // 點擊樣式
                     text={`${item.option}+$${item.price}`}
+                    onClick={() => {
+                      // 點擊到的選項的索引值，沒有在陣列裡面會回傳-1
+                      const index = selectedOption.indexOf(item);
+                      console.log(index)
+                      // 如果陣列裡沒有這筆所點擊到的option
+                      if (index === -1) {
+                        // 新增到陣列裡
+                        setSelectedOption(prevOption => [...prevOption, item])
+                      } else {
+                        // 如果點擊到的option陣列裡已經有了，就篩選出來
+                        setSelectedOption(prevOption => prevOption.filter((_,i) => {
+                          return i !== index
+                        }))
+                      }
+                    }}
                   ></Button>
                 )
               })

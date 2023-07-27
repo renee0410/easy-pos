@@ -39,7 +39,7 @@
     border-radius: 20px;
     border: 1px solid $secondary;
 
-    &:active {
+    &.active {
       background-color: $primary;
       color: $fontLight;
     }
