@@ -12,8 +12,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebase";
 
 export function MenuPage() {
-
-	const tabListData = [
+  const tabListData = [
 		{
 			title: '全部',
 		},
@@ -39,93 +38,27 @@ export function MenuPage() {
 			title: '飲料',
 		},
 	]
-  const productListData = [
-    {
-      img: 'russian-apetizer-blinchik-crepes-inside-white-plate.jpg',
-      title: '原味蛋餅',
-      price: 25,
-    },
-    {
-      img: 'russian-apetizer-blinchik-crepes-inside-white-plate.jpg',
-      title: '玉米蛋餅',
-      price: 35,
-    },
-    {
-      img: 'tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese.jpg',
-      title: '嫩蛋漢堡',
-      price: 35,
-    },
-    {
-      img: 'tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese.jpg',
-      title: '豬排漢堡',
-      price: 45,
-    },
-    {
-      img: 'delicious-peanut-butter-toast.jpg',
-      title: '薄片吐司',
-      price: 25,
-    },
-    {
-      img: 'sandwich.jpg',
-      title: '火腿吐司',
-      price: 40,
-    },
-    {
-      img: 'sandwich.jpg',
-      title: '香雞吐司',
-      price: 50,
-    },
-    {
-      img: 'fried-tofu.jpg',
-      title: '蘿蔔糕',
-      price: 30,
-    },
-    {
-      img: 'close-up-french-fries-plate.jpg',
-      title: '薯條',
-      price: 35,
-    },
-    {
-      img: 'spaghetti-with-bolognese-sauce-wooden-tablexa.jpg',
-      title: '義大利肉醬麵',
-      price: 45,
-    },
-    {
-      img: 'top-view-salad-dark-bowl.jpg',
-      title: '生菜沙拉',
-      price: 60,
-    },
-    {
-      img: 'front-view-herbal-tea-concept-with-lemon.jpg',
-      title: '紅茶',
-      price: 20,
-    },
-    {
-      img: 'closeup-glass-ice-tea-with-milk-table-white.jpg',
-      title: '奶茶',
-      price: 30,
-    },
-    {
-      img: 'ice-falling-brown-drink.jpg',
-      title: '咖啡',
-      price: 30,
-    },
-  ];
-
-
-  // 初始化載入api
+  // 將firebase取出的productData存放在productList
+  const [ productList, setProductList ] = useState([]);
+  // 儲存彈跳視窗顯示或隱藏
+  const [ showPopup, setShowPopup ] = useState(false);
+  // 儲存所點擊到的商品
+  const [ selectedProduct, setSelectedProduct ] = useState(null);
+  
+  // 初始化時呼叫產品列表api
   useEffect(() => {
     getDocs(collection(db, "products"))
       .then((doc) => {
+        // doc為物件，docs為取得doc底下陣列的方法
         const productData = doc.docs.map((data) => {
-          return data.data();
+          // data.id會取出firebase文件的id，再使用展開方法將屬性id塞進productData的陣列裡
+          return{ ...data.data(), id: data.id};
         })
-        console.log(productData);
+        setProductList(productData);
       })
   },[]);
-
-  // 儲存彈跳視窗顯示或隱藏
-  const [showPopup, setShowPopup] = useState(false);
+  // console.log(productList)
+  console.log(selectedProduct)
 
   return (
     <>
@@ -145,11 +78,18 @@ export function MenuPage() {
           {/* 產品區塊 */}
           <div className="productList">
             {
-              productListData.map((item) => {
+              productList.map((item) => {
                 return (
-                  <div className="productCard" key={item.title} onClick={ () => setShowPopup(true) }>  
+                  <div 
+                    className="productCard" 
+                    key={item.id} 
+                    onClick={ () => {
+                      setShowPopup(true); // 開啟彈跳視窗
+                      setSelectedProduct(item);  // 儲存所點擊到的商品
+                    }}
+                  >  
                     <div className="imgBoxFit">
-                      <img src={require(`../assets/img/products/${item.img}`)} alt="" />
+                      <img src={require(`../assets/img/products/${item.imgUrl}`)} alt="" />
                     </div>
                     <div className="cardBody">
                       <h6 className="cardTitle">{item.title}</h6>
@@ -233,14 +173,16 @@ export function MenuPage() {
         showPopup={showPopup}
         setShowPopup={setShowPopup}
       >
-
         {/* 上方特製按鈕區塊 */}
         <div className="specialProductArea">
           <h5>特製</h5>
           <div className="specialProductBtn">
+            {
+              console.log(selectedProduct)
+            }
             <Button
               style="btnMd"
-              text="加蛋+$10"
+              text={`加蛋+$10`}
             ></Button>
           </div>
         </div>
