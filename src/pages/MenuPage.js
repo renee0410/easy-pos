@@ -46,6 +46,10 @@ export function MenuPage() {
   const [ selectedProduct, setSelectedProduct ] = useState(null);
   // 儲存所點擊到的特製按鈕
   const [ selectedOption, setSelectedOption] = useState([]);
+  // 儲存計數器數量
+  const [ cartQuantity, setCartQuantity ] = useState(1);
+  // 儲存備註內容
+  const [ comment, setComment ] = useState("");
   // 儲存欲加到購物車的內容
   const [ cartItems, setCartItems ] = useState([])
   
@@ -64,8 +68,8 @@ export function MenuPage() {
   // console.log(productList)
   // console.log(selectedProduct)
   useEffect(() => {
-    console.log(selectedOption)
-  },[selectedOption])
+    console.log(cartItems)
+  },[cartItems])
   
 
   return (
@@ -180,16 +184,24 @@ export function MenuPage() {
       {/* 渲染Popup前先檢查selectedProduct是否存在否則會報錯 */}
       { selectedProduct && (
         <Popup
-        showPopup={showPopup}      // 顯示彈窗
-        setShowPopup={setShowPopup}  // 顯示彈窗
-        selectedProduct={selectedProduct}
-        title={`${selectedProduct.title} $${selectedProduct.price}`}
-        footer={
-          <Button
-            style="btnLg btnLgPrimary"
-            text="加入購物車"
-          ></Button>    
-        }
+          showPopup={showPopup}      // 顯示彈窗
+          setShowPopup={setShowPopup}  // 顯示彈窗
+          selectedProduct={selectedProduct}
+          title={`${selectedProduct.title} $${selectedProduct.price}`}
+          footer={
+            <Button
+              style="btnLg btnLgPrimary"
+              text="加入購物車"
+              onClick={() => {
+                setCartItems((preItems) => [...preItems, {
+                  title: selectedProduct.title,
+                  options: selectedOption,
+                  qty: cartQuantity,
+                  comment: comment
+                }])
+              }}
+            ></Button>    
+          }
       >
         {/* 上方特製按鈕區塊 */}
         <div className="specialProductArea">
@@ -205,7 +217,6 @@ export function MenuPage() {
                     onClick={() => {
                       // 點擊到的選項的索引值，沒有在陣列裡面會回傳-1
                       const index = selectedOption.indexOf(item);
-                      console.log(index)
                       // 如果陣列裡沒有這筆所點擊到的option
                       if (index === -1) {
                         // 新增到陣列裡
@@ -226,11 +237,21 @@ export function MenuPage() {
         {/* 備註欄區塊 */}
         <div className="remarkArea">
           <h5>備註</h5>
-          <textarea name="" id="remark" cols="30" rows="5" placeholder="請輸入備註"></textarea>
+          <textarea 
+            name="comment" 
+            id="remark" 
+            cols="30" 
+            rows="5" 
+            placeholder="請輸入備註"
+            onChange={(e) => {setComment(e.target.value)}}
+          ></textarea>
         </div>
         {/* 計數器區塊 */}
         <div className="counterArea">
-          <Counter></Counter>
+          <Counter
+            cartQuantity={cartQuantity}
+            setCartQuantity={setCartQuantity}
+          ></Counter>
         </div>
         </Popup>
       ) }
