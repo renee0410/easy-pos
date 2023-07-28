@@ -46,6 +46,8 @@ export function MenuPage() {
   const [ selectedProduct, setSelectedProduct ] = useState(null);
   // 儲存所點擊到的特製按鈕
   const [ selectedOption, setSelectedOption] = useState([]);
+  // 儲存欲加到購物車的內容
+  const [ cartItems, setCartItems ] = useState([])
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -179,6 +181,7 @@ export function MenuPage() {
         showPopup={showPopup}      // 顯示彈窗
         setShowPopup={setShowPopup}  // 顯示彈窗
         selectedProduct={selectedProduct}
+        title={`${selectedProduct.title} $${selectedProduct.price}`}
       >
         {/* 上方特製按鈕區塊 */}
         <div className="specialProductArea">

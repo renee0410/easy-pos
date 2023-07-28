@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 
-export function Popup({ showPopup, setShowPopup, children, selectedProduct }) {
+export function Popup({ showPopup, setShowPopup, children, title }) {
 
   // 關閉彈跳視窗
   function cancelPopup() {
@@ -19,7 +19,7 @@ export function Popup({ showPopup, setShowPopup, children, selectedProduct }) {
                 <div className="container">
                   {/* 標題區塊 */}
                   <div className="popupTop">
-                    <h3 className="popupTitle">{`${selectedProduct.title} $${selectedProduct.price}`}</h3>
+                    <h3 className="popupTitle">{title}</h3>
                   </div>
                   {/* 中間內容區塊 */}
                   <div className="popupContent">
