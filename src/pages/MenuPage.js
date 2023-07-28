@@ -177,11 +177,19 @@ export function MenuPage() {
             </div>
         </div>
 		  </div>
-      <Popup
+      {/* 渲染Popup前先檢查selectedProduct是否存在否則會報錯 */}
+      { selectedProduct && (
+        <Popup
         showPopup={showPopup}      // 顯示彈窗
         setShowPopup={setShowPopup}  // 顯示彈窗
         selectedProduct={selectedProduct}
         title={`${selectedProduct.title} $${selectedProduct.price}`}
+        footer={
+          <Button
+            style="btnLg btnLgPrimary"
+            text="加入購物車"
+          ></Button>    
+        }
       >
         {/* 上方特製按鈕區塊 */}
         <div className="specialProductArea">
@@ -224,7 +232,9 @@ export function MenuPage() {
         <div className="counterArea">
           <Counter></Counter>
         </div>
-      </Popup>
+        </Popup>
+      ) }
+      
     </>
 		
 	)

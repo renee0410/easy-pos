@@ -1,6 +1,10 @@
 import { Button } from "./Button";
+import Icon from '@mdi/react';
+import { 
+  mdiClose,  // 叉叉
+} from '@mdi/js';
 
-export function Popup({ showPopup, setShowPopup, children, title }) {
+export function Popup({ showPopup, setShowPopup, children, title, footer }) {
 
   // 關閉彈跳視窗
   function cancelPopup() {
@@ -27,15 +31,13 @@ export function Popup({ showPopup, setShowPopup, children, title }) {
                   </div>
                   {/* 底部按鈕區塊 */}
                   <div className="popupBottom">
-                    <Button
-                      style="btnLg btnLgSecondary"
-                      text="取消"
-                      onClick={cancelPopup}
-                    ></Button>
-                    <Button
-                      style="btnLg btnLgPrimary"
-                      text="送出"
-                    ></Button>         
+                    {footer}
+                  </div>
+                  {/* 關閉按鈕 */}
+                  <div className="closeBtn" onClick={cancelPopup}>
+                    <div className="icon">
+                      <Icon path={mdiClose}></Icon>
+                    </div>
                   </div>
                 </div>
               </div>
