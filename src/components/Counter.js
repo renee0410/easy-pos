@@ -7,16 +7,16 @@ import { useState } from 'react';
 
 export function Counter() {
   // 儲存計數器數量
-  const [ num, setNum ] = useState(0);
+  const [ cartQuantity, setCartQuantity ] = useState(1);
 
   function add() {
-    setNum( num + 1 );
+    setCartQuantity( (pre) => pre + 1 );
   }
 
   function minus() {
     // 限制計數器為負數
-    if (num) {
-      setNum( num - 1 );
+    if (cartQuantity > 1) {
+      setCartQuantity( (pre) => pre - 1 );
     }
   }
 
@@ -28,7 +28,7 @@ export function Counter() {
         </div>
       </div>
       <div className="numBlock">
-        <span>{num}</span>
+        <span>{cartQuantity}</span>
       </div>
       <div className="plusBtn" onClick={add}>
         <div className="icon">
