@@ -65,8 +65,6 @@ export function MenuPage() {
         setProductList(productData);
       })
   },[]);
-  // console.log(productList)
-  // console.log(selectedProduct)
   useEffect(() => {
     console.log(cartItems)
   },[cartItems])
@@ -139,27 +137,35 @@ export function MenuPage() {
             </div>
             {/* 購物車清單區塊 */}
             <div className="cartList">
-              <div className="cartProduct">
-                <div className="lCartProduct">
-                  <span className="productTitle">火腿蛋餅</span>
-                  <span className="productDetail">不要醬油+$0</span>
-                  <span className="productNum">x1</span>
-                </div>
-                <div className="rCartProduct">
-                  {/* 修改刪除按鈕區塊 */}
-                  <div className="modifyBtn">
-                    <Button
-                      style="btnSm"
-                      iconPath={mdiLeadPencil}
-                    ></Button>
-                    <Button
-                      style="btnSm"
-                      iconPath={mdiTrashCan}
-                    ></Button>
-                  </div>
-                  <h5 className="productPrice">$40</h5>
-                </div>
-              </div>
+              {
+                cartItems.map((item, index) => {
+                  return (
+                    <div className="cartProduct" key={index}>
+                      <div className="lCartProduct">
+                        <span className="productTitle">{item.title}</span>
+                        <span className="productDetail">
+                          {item.optionTxt} {item.itemComment ? `,${item.itemComment}` : ""}
+                        </span>
+                        <span className="productNum">x{item.qty}</span>
+                      </div>
+                      <div className="rCartProduct">
+                        {/* 修改刪除按鈕區塊 */}
+                        <div className="modifyBtn">
+                          <Button
+                            style="btnSm"
+                            iconPath={mdiLeadPencil}
+                          ></Button>
+                          <Button
+                            style="btnSm"
+                            iconPath={mdiTrashCan}
+                          ></Button>
+                        </div>
+                        <h5 className="productPrice">${item.itemPriceSum}</h5>
+                      </div>
+                    </div>
+                  )
+                })
+              }
             </div>
             {/* 下方總金額及結帳按鈕區塊 */}
             <div className="cartBottom">
@@ -187,18 +193,35 @@ export function MenuPage() {
           showPopup={showPopup}      // 顯示彈窗
           setShowPopup={setShowPopup}  // 顯示彈窗
           selectedProduct={selectedProduct}
+          setSelectedOption={setSelectedOption} // 用於關閉彈窗時清空setSelectedOption
+          setComment={setComment}  // 用於關閉彈窗時清空備註欄
+          setCartQuantity={setCartQuantity}  // 用於關閉彈窗時將計數器為初始化1
           title={`${selectedProduct.title} $${selectedProduct.price}`}
           footer={
             <Button
               style="btnLg btnLgPrimary"
               text="加入購物車"
               onClick={() => {
+                // optionTxt顯示所選擇的特製選項文字及金額
+                let optionPrice = 0;  // 特製選項金額加總
+                let optionTxt = selectedOption.
+                  map((item) => {
+                    optionPrice = optionPrice + item.price;
+                    return `${item.option}+$${item.price}`
+                  }).join();
+                // 產品小計：產品金額加上特製選項金額乘上數量
+                let itemPriceSum = (optionPrice + selectedProduct.price) * cartQuantity;
+
                 setCartItems((preItems) => [...preItems, {
-                  title: selectedProduct.title,
-                  options: selectedOption,
-                  qty: cartQuantity,
-                  comment: comment
-                }])
+                  title: selectedProduct.title, // 產品名稱
+                  price: selectedProduct.price, // 產品原始金額
+                  options: selectedOption, // 所選擇的特製選項
+                  optionTxt: optionTxt, // 所選擇的特製選項文字及金額
+                  optionPrice: optionPrice, // 
+                  qty: cartQuantity,  // 數量
+                  itemComment: comment,  // 備註
+                  itemPriceSum: itemPriceSum, // 產品小計
+                }]);
               }}
             ></Button>    
           }

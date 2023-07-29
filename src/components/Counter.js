@@ -6,8 +6,6 @@ import {
 import { useState } from 'react';
 
 export function Counter( { cartQuantity, setCartQuantity } ) {
-  // // 儲存計數器數量
-  // const [ cartQuantity, setCartQuantity ] = useState(1);
 
   function add() {
     setCartQuantity( (pre) => pre + 1 );
