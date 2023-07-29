@@ -53,9 +53,9 @@ export function MenuPage() {
   // 儲存欲加到購物車的內容
   const [ cartItems, setCartItems ] = useState([]);
   // 儲存日期
-  const [ date, setDate ] = useState(new Date());
+  const [ date, setDate ] = useState("");
   // 儲存時間
-  const [ time, setTime ] = useState(new Date());
+  const [ time, setTime ] = useState("");
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -92,11 +92,19 @@ export function MenuPage() {
       itemComment: comment,  // 備註
       itemPriceSum: itemPriceSum, // 產品小計
     }]);
-}
+  }
 
+  function currentDate() {
+    const today = new Date();
+    setDate(`${today.getFullYear().toString().padStart(2, "0")}-${((today.getMonth())+1).toString().padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`);
+    setTime(`${today.getHours().toString().padStart(2, "0")}:${today.getMinutes().toString().padStart(2, "0")}:${today.getSeconds().toString().padStart(2, "0")}`);
+  }
+  
   useEffect(() => {
-    console.log(cartItems)
-  },[cartItems])
+    setInterval(() => {
+      currentDate();
+    }, 1000);
+  },[])
   
 
   return (
@@ -151,8 +159,8 @@ export function MenuPage() {
             <h2>清單(3)</h2>
             <hr/>
             <div className="info">
-              <span className="orderDate">2023-04-10</span>
-              <span className="orderTime">19:00:00</span>
+              <span className="orderDate">{date}</span>
+              <span className="orderTime">{time}</span>
             </div>
             <hr />
             {/* 內用外帶按鈕區塊 */}
