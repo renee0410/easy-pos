@@ -52,6 +52,8 @@ export function MenuPage() {
   const [ comment, setComment ] = useState("");
   // 儲存欲加到購物車的內容
   const [ cartItems, setCartItems ] = useState([]);
+  // 儲存購物車ID
+  const [ cartId, setCartId ] = useState(null);
   // 儲存日期
   const [ date, setDate ] = useState("");
   // 儲存時間
@@ -70,8 +72,11 @@ export function MenuPage() {
       })
   },[]);
 
-  // 加入購物車
-  function addCart() {
+  /**
+   * 送出彈窗
+   * @param cartId null: 新增 !null: 修改 
+   */
+  function sendPopup(cartId) {
     // optionTxt顯示所選擇的特製選項文字及金額
     let optionPrice = 0;  // 特製選項金額加總
     let optionTxt = selectedOption.
@@ -82,7 +87,8 @@ export function MenuPage() {
     // 產品小計：產品金額加上特製選項金額乘上數量
     let itemPriceSum = (optionPrice + selectedProduct.price) * cartQuantity;
 
-    setCartItems((preItems) => [...preItems, {
+    // 欲儲存的資料
+    const saveData = {
       title: selectedProduct.title, // 產品名稱
       price: selectedProduct.price, // 產品原始金額
       options: selectedOption, // 所選擇的特製選項
@@ -91,15 +97,52 @@ export function MenuPage() {
       qty: cartQuantity,  // 數量
       itemComment: comment,  // 備註
       itemPriceSum: itemPriceSum, // 產品小計
-    }]);
+      productId: selectedProduct.id, // 產品ID
+    };
+
+    // 如果是新增
+    if (cartId === null) {
+      setCartItems((preItems) => [...preItems, saveData]);
+    } else {
+      let cartItemsSave = JSON.parse(JSON.stringify(cartItems));
+      cartItemsSave[cartId] = saveData;
+      setCartItems(cartItemsSave);
+    };
   }
 
+  // 修改購物車清單
+  function editCartItem(index) {
+    setCartId(index);  // 傳入點擊到的索引值
+
+    // 尋找現在點選的產品資訊
+    let productIdIdx = productList.findIndex((item) => item.id === cartItems[index].productId);
+    // 如果有找到
+    if (productIdIdx !== -1) {
+      // 選擇的產品資訊
+      let productListSave = productList[productIdIdx];
+      console.log(productListSave);
+      // 帶入特製
+      setSelectedOption(cartItems[index].options);
+      // 帶入數量
+      productListSave.qty = cartItems[index].qty;
+      setCartQuantity(productListSave.qty);
+      // 帶入備註
+      setComment(cartItems[index].itemComment);
+
+      setSelectedProduct(productListSave);  // 儲存所點擊到的商品
+    }
+
+    setShowPopup(true);
+  }
+
+  //顯示時間 
   function currentDate() {
     const today = new Date();
     setDate(`${today.getFullYear().toString().padStart(2, "0")}-${((today.getMonth())+1).toString().padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`);
     setTime(`${today.getHours().toString().padStart(2, "0")}:${today.getMinutes().toString().padStart(2, "0")}:${today.getSeconds().toString().padStart(2, "0")}`);
   }
-  
+
+  // 每秒自動更新時間
   useEffect(() => {
     setInterval(() => {
       currentDate();
@@ -132,6 +175,7 @@ export function MenuPage() {
                     key={item.id} 
                     onClick={ () => {
                       setSelectedOption([]);  // 清空特製選項
+                      setCartId(null);  // 編輯索引值為null 代表是新增
                       setComment("");  // 清空備註欄
                       setCartQuantity(1);  // 清空計數器
                       setShowPopup(true); // 開啟彈跳視窗
@@ -156,7 +200,7 @@ export function MenuPage() {
         <div className="cartArea">
             {/* 上方訂單資訊區塊 */}
             <div className="cartTop">
-            <h2>清單(3)</h2>
+            <h2>清單({cartItems.length})</h2>
             <hr/>
             <div className="info">
               <span className="orderDate">{date}</span>
@@ -194,6 +238,7 @@ export function MenuPage() {
                           <Button
                             style="btnSm"
                             iconPath={mdiLeadPencil}
+                            onClick={() => {editCartItem(index)}}
                           ></Button>
                           <Button
                             style="btnSm"
@@ -237,8 +282,8 @@ export function MenuPage() {
           footer={
             <Button
               style="btnLg btnLgPrimary"
-              text="加入購物車"
-              onClick={addCart}
+              text={cartId !== null ? "更新" : "加入購物車"}
+              onClick={() => {sendPopup(cartId)}}
             ></Button>    
           }
       >
@@ -283,6 +328,7 @@ export function MenuPage() {
             rows="5" 
             placeholder="請輸入備註"
             onChange={(e) => {setComment(e.target.value)}}
+            value={comment}
           ></textarea>
         </div>
         {/* 計數器區塊 */}
