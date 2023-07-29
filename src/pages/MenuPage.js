@@ -58,6 +58,8 @@ export function MenuPage() {
   const [ date, setDate ] = useState("");
   // 儲存時間
   const [ time, setTime ] = useState("");
+  // 儲存總金額
+  const [ totalPrice, setTotalPrice] = useState(0);
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -134,6 +136,9 @@ export function MenuPage() {
 
     setShowPopup(true);
   }
+  useEffect(() => {
+    console.log(cartItems);
+  },[cartItems])
 
   //顯示時間 
   function currentDate() {
@@ -148,7 +153,12 @@ export function MenuPage() {
       currentDate();
     }, 1000);
   },[])
-  
+
+  // 加總總金額
+  function sumTotalPrice() {
+    return  cartItems.reduce((acc, val) => acc + val.itemPriceSum, 0)
+      
+  }
 
   return (
     <>
@@ -243,6 +253,12 @@ export function MenuPage() {
                           <Button
                             style="btnSm"
                             iconPath={mdiTrashCan}
+                            onClick={() => {
+                              // 刪除
+                              setCartItems(cartItems.filter((_,itemIndex) => {
+                                return itemIndex !== index
+                              }))
+                            }}
                           ></Button>
                         </div>
                         <h5 className="productPrice">${item.itemPriceSum}</h5>
@@ -257,7 +273,7 @@ export function MenuPage() {
               <hr/>
               <div className="totalAmountArea">
                 <h4>Total</h4>
-                <h4>$130</h4>
+                <h4>{`$${sumTotalPrice()}`}</h4>
               </div>
               <div className="payBtnArea">
                 <Button
