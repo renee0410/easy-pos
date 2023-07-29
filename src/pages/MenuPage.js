@@ -51,7 +51,11 @@ export function MenuPage() {
   // 儲存備註內容
   const [ comment, setComment ] = useState("");
   // 儲存欲加到購物車的內容
-  const [ cartItems, setCartItems ] = useState([])
+  const [ cartItems, setCartItems ] = useState([]);
+  // 儲存日期
+  const [ date, setDate ] = useState(new Date());
+  // 儲存時間
+  const [ time, setTime ] = useState(new Date());
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -65,6 +69,31 @@ export function MenuPage() {
         setProductList(productData);
       })
   },[]);
+
+  // 加入購物車
+  function addCart() {
+    // optionTxt顯示所選擇的特製選項文字及金額
+    let optionPrice = 0;  // 特製選項金額加總
+    let optionTxt = selectedOption.
+      map((item) => {
+        optionPrice = optionPrice + item.price;
+        return `${item.option}+$${item.price}`
+      }).join();
+    // 產品小計：產品金額加上特製選項金額乘上數量
+    let itemPriceSum = (optionPrice + selectedProduct.price) * cartQuantity;
+
+    setCartItems((preItems) => [...preItems, {
+      title: selectedProduct.title, // 產品名稱
+      price: selectedProduct.price, // 產品原始金額
+      options: selectedOption, // 所選擇的特製選項
+      optionTxt: optionTxt, // 所選擇的特製選項文字及金額
+      optionPrice: optionPrice, // 
+      qty: cartQuantity,  // 數量
+      itemComment: comment,  // 備註
+      itemPriceSum: itemPriceSum, // 產品小計
+    }]);
+}
+
   useEffect(() => {
     console.log(cartItems)
   },[cartItems])
@@ -94,6 +123,9 @@ export function MenuPage() {
                     className="productCard" 
                     key={item.id} 
                     onClick={ () => {
+                      setSelectedOption([]);  // 清空特製選項
+                      setComment("");  // 清空備註欄
+                      setCartQuantity(1);  // 清空計數器
                       setShowPopup(true); // 開啟彈跳視窗
                       setSelectedProduct(item);  // 儲存所點擊到的商品
                     }}
@@ -119,8 +151,8 @@ export function MenuPage() {
             <h2>清單(3)</h2>
             <hr/>
             <div className="info">
-              <span className="orderId">訂單編號＃01</span>
-              <span className="orderDate">2023-04-10 19:00:00</span>
+              <span className="orderDate">2023-04-10</span>
+              <span className="orderTime">19:00:00</span>
             </div>
             <hr />
             {/* 內用外帶按鈕區塊 */}
@@ -193,36 +225,12 @@ export function MenuPage() {
           showPopup={showPopup}      // 顯示彈窗
           setShowPopup={setShowPopup}  // 顯示彈窗
           selectedProduct={selectedProduct}
-          setSelectedOption={setSelectedOption} // 用於關閉彈窗時清空setSelectedOption
-          setComment={setComment}  // 用於關閉彈窗時清空備註欄
-          setCartQuantity={setCartQuantity}  // 用於關閉彈窗時將計數器為初始化1
           title={`${selectedProduct.title} $${selectedProduct.price}`}
           footer={
             <Button
               style="btnLg btnLgPrimary"
               text="加入購物車"
-              onClick={() => {
-                // optionTxt顯示所選擇的特製選項文字及金額
-                let optionPrice = 0;  // 特製選項金額加總
-                let optionTxt = selectedOption.
-                  map((item) => {
-                    optionPrice = optionPrice + item.price;
-                    return `${item.option}+$${item.price}`
-                  }).join();
-                // 產品小計：產品金額加上特製選項金額乘上數量
-                let itemPriceSum = (optionPrice + selectedProduct.price) * cartQuantity;
-
-                setCartItems((preItems) => [...preItems, {
-                  title: selectedProduct.title, // 產品名稱
-                  price: selectedProduct.price, // 產品原始金額
-                  options: selectedOption, // 所選擇的特製選項
-                  optionTxt: optionTxt, // 所選擇的特製選項文字及金額
-                  optionPrice: optionPrice, // 
-                  qty: cartQuantity,  // 數量
-                  itemComment: comment,  // 備註
-                  itemPriceSum: itemPriceSum, // 產品小計
-                }]);
-              }}
+              onClick={addCart}
             ></Button>    
           }
       >

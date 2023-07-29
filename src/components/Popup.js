@@ -4,14 +4,11 @@ import {
   mdiClose,  // 叉叉
 } from '@mdi/js';
 
-export function Popup({ showPopup, setShowPopup, setSelectedOption, setComment, setCartQuantity, children, title, footer }) {
-
+export function Popup({ showPopup, setShowPopup, children, title, footer }) {
+  
   // 關閉彈跳視窗
   function cancelPopup() {
     setShowPopup(false);
-    setSelectedOption([]);
-    setComment("");
-    setCartQuantity(1);
   }
 
   return (
