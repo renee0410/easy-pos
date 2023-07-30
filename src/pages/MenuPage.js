@@ -8,7 +8,7 @@ import {
   mdiTrashCan  // 刪除
 } from '@mdi/js';
 // firebase
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 
 export function MenuPage() {
@@ -60,6 +60,8 @@ export function MenuPage() {
   const [ time, setTime ] = useState("");
   // 儲存總金額
   const [ totalPrice, setTotalPrice] = useState(0);
+  // 儲存內用外帶
+  const [ togo, setTogo ] = useState("內用");
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -136,9 +138,9 @@ export function MenuPage() {
 
     setShowPopup(true);
   }
-  useEffect(() => {
-    console.log(cartItems);
-  },[cartItems])
+  // useEffect(() => {
+  //   console.log(cartItems);
+  // },[cartItems])
 
   //顯示時間 
   function currentDate() {
@@ -157,8 +159,25 @@ export function MenuPage() {
   // 加總總金額
   function sumTotalPrice() {
     return  cartItems.reduce((acc, val) => acc + val.itemPriceSum, 0)
-      
   }
+  // 每當cartItems改變時，重新寫入總金額
+  useEffect(() => {
+    setTotalPrice(sumTotalPrice());
+  },[cartItems]);
+
+  // 結帳api
+  function onSubmit() {
+    addDoc(collection(db, "paid"), {
+      cartItems,
+      togo,
+      totalPrice,
+      orderDate: date,
+      orderTime: time,
+    }).then(() => {
+      setCartItems([]);
+    })
+  }
+  
 
   return (
     <>
@@ -220,12 +239,14 @@ export function MenuPage() {
             {/* 內用外帶按鈕區塊 */}
             <div className="togoBtn">
               <Button
-                style="btnMd"
+                style={`btnMd ${togo === "內用" ? "active" : ""}`}
                 text="內用"
+                onClick={() => setTogo("內用")}
               ></Button>
               <Button
-                style="btnMd"
+                style={`btnMd ${togo === "外帶" ? "active" : ""}`}
                 text="外帶"
+                onClick={() => setTogo("外帶")}
               ></Button>
             </div>
             </div>
@@ -283,6 +304,7 @@ export function MenuPage() {
                 <Button
                   style="btnLg btnLgPrimary"
                   text="結帳"
+                  onClick={onSubmit}
                 ></Button>
               </div>
             </div>
