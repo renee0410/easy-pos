@@ -34,10 +34,10 @@ hr {
 
 // 文字大小
 h1 {
-	font-size: $fontSizeDefault + $fontSpace * 15; // 26
+	font-size: $fontSizeDefault + $fontSpace * 15; // 40
 }
 h2 {
-	font-size: $fontSizeDefault + $fontSpace * 5; // 24
+	font-size: $fontSizeDefault + $fontSpace * 9; // 30
 }
 h3 {
 	font-size: $fontSizeDefault + $fontSpace * 3; // 22
@@ -57,6 +57,9 @@ span {
 p {
 	font-size: $fontSizeDefault - $fontSpace * 2
 } // 12
+table {
+  font-size: $fontSizeDefault + $fontSpace;  // 18
+}
 
 // btn預設樣式
 .btn {

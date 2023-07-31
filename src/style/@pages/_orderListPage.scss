@@ -1,0 +1,72 @@
+.orderListPage {
+
+  .header {
+    padding: 16px 0 0 32px;
+    margin-bottom: 40px;
+  }
+
+  .listArea {
+    text-align: left;
+    table {
+      margin: auto;
+      width: 1130px;
+      table-layout: fixed;
+
+      th {
+        padding-bottom: 8px;
+
+        &.num {
+          width: 60px;
+        }
+        &.orderDate,&.orderTime {
+          width: 140px;
+        }
+        &.orderItems {
+          width: 320px;
+        }
+        &.orderPrice {
+          width: 110px;
+        }
+        &.togo {
+          width: 130px;
+        }
+        &.isPaid {
+          width: 140px;
+        }
+        &.paid {
+          text-align: center;
+        }
+      }
+
+      td {
+        border-top: 1px solid $gray;
+        padding: 8px 0 8px 0;
+        vertical-align: middle;
+        margin: auto;
+
+        &.orderItems {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right: 20px;
+        }
+        &.isPaid {
+          color: $danger;
+          &.complete {
+            color: $success;
+          }
+        }
+        &.paid {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .btn {
+          border: 1px solid $primary;
+          color: $primary;
+        }
+      }
+    }
+  }
+}

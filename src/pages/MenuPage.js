@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
+
 // icon
 import { 
 	mdiLeadPencil, // 修改
@@ -165,19 +166,22 @@ export function MenuPage() {
     setTotalPrice(sumTotalPrice());
   },[cartItems]);
 
-  // 結帳api
-  function onSubmit() {
-    addDoc(collection(db, "paid"), {
+  /**
+   * 訂單列表送出
+   * @param isPaid 是否結帳
+   */
+  function onSubmit(isPaid) {
+    addDoc(collection(db, "orderList"), {
       cartItems,
       togo,
       totalPrice,
       orderDate: date,
       orderTime: time,
+      isPaid,
     }).then(() => {
       setCartItems([]);
     })
   }
-  
 
   return (
     <>
@@ -300,11 +304,12 @@ export function MenuPage() {
                 <Button
                   style="btnLg btnLgSecondary"
                   text="暫存"
+                  onClick={() => onSubmit(false)}
                 ></Button>
                 <Button
                   style="btnLg btnLgPrimary"
                   text="結帳"
-                  onClick={onSubmit}
+                  onClick={() => onSubmit(true)}
                 ></Button>
               </div>
             </div>
