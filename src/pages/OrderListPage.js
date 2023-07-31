@@ -6,25 +6,40 @@ import {
   mdiTrashCan  // 刪除
 } from '@mdi/js';
 // firebase
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 
 export function OrderListPage() {
-
+  // 儲存訂單列表資訊
   const [ orderList, setOrderList ] =useState([]);
 
-  useEffect(() => {
+  // 取得訂單列表api
+  function getOrderList() {
     getDocs(collection(db, "orderList")).
       then((doc) => {
         const orderList = doc.docs.map((data) => {
           return {...data.data(), id: data.id};
         })
         setOrderList(orderList);
-        console.log(orderList);
       })
-  },[]);
-  
+  }
 
+  // 呼叫取得訂單列表api
+  useEffect(() => {
+    getOrderList();
+  },[]);
+
+  // 按下結帳按鈕時呼叫更改訂單列表api
+    function handleSubmit(id) {
+      console.log(id)
+      const washingtonRef = doc(db, "orderList", id);
+      updateDoc(washingtonRef, {
+        isPaid: true
+      }).then(() => {
+        getOrderList();
+      })
+    }
+    
   return (
     <>
       <div className="container orderListPage">
@@ -42,13 +57,13 @@ export function OrderListPage() {
                 <th className="orderPrice">金額</th>
                 <th className="togo">內用外帶</th>
                 <th className="isPaid">付款狀態</th>
-                <th className="paid">結帳</th>
+                {/* <th className="paid">結帳</th> */}
               </tr>
             </thead>
               <tbody>
                 {
                   orderList.map((item, index) => {
-                    console.log(item.cartItems)
+                    console.log(item)
                     return (
                       <tr key={item.id}>
                         <td>{`${(index + 1).toString().padStart(2, "0")}`}</td>
@@ -71,6 +86,7 @@ export function OrderListPage() {
                           <Button
                             style="btnMd"
                             text="結帳"
+                            onClick={() => handleSubmit(item.id)}
                           ></Button>
                         }
                         </td>
