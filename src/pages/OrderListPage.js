@@ -43,7 +43,7 @@ export function OrderListPage() {
   return (
     <>
       <div className="container orderListPage">
-        <div className="header">
+        <div className="orderListPageHeader">
           <h2>訂單管理</h2>
         </div>
         <div className="listArea">
@@ -57,7 +57,7 @@ export function OrderListPage() {
                 <th className="orderPrice">金額</th>
                 <th className="togo">內用外帶</th>
                 <th className="isPaid">付款狀態</th>
-                {/* <th className="paid">結帳</th> */}
+                <th className="paid">結帳</th>
               </tr>
             </thead>
               <tbody>
