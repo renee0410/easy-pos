@@ -31,7 +31,7 @@ export function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = Credential.user;
-        navigate('/home');
+        navigate('/');
       })
       .catch((error) => {
         if (error.code === "auth/user-not-found") {

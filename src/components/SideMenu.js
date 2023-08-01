@@ -1,4 +1,5 @@
 import Logo from '../assets/img/Logo.svg';
+import { NavLink } from 'react-router-dom';
 // icon
 import Icon from '@mdi/react';
 import { 
@@ -21,26 +22,32 @@ export function SideMenu() {
 		{	
 			path: mdiViewDashboard,
 			linkTitle: '儀表板',
+      link: 'dashboard'
 		}, 
 		{	
 			path: mdiFileDocumentOutline,
 			linkTitle: '菜單',
+      link: '/'
 		},
 		{	
 			path: mdiHistory,
 			linkTitle: '訂單管理',
+      link: 'orderList'
 		},
 		{	
 			path: mdiCashRegister,
 			linkTitle: '結帳作業',
+      link: 'cash'
 		},
 		{	
 			path: mdiTimetable,
 			linkTitle: '班表管理',
+      link: 'schedule'
 		},
 		{	
 			path: mdiCogOutline,
 			linkTitle: '設定',
+      link: 'setting'
 		},
 	];
   // 
@@ -73,7 +80,10 @@ export function SideMenu() {
 				{
 					icons.map((item) => {
 						return (
-							<div className='sideMenuBtn' key={item.path}>
+							<NavLink 
+                className={({isActive}) => isActive ? 'sideMenuBtn active' : 'sideMenuBtn'}
+                to={item.link} key={item.path}
+              >
 								<div className="icon">
 									<Icon 
 										path={item.path}
@@ -82,7 +92,7 @@ export function SideMenu() {
 								<div className="linkTitle">
 									<h6>{item.linkTitle}</h6>
 								</div>
-							</div>
+							</NavLink>
 						)
 					})
 				}
