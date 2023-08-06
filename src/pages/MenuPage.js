@@ -41,6 +41,10 @@ export function MenuPage() {
 	]
   // 將firebase取出的productData存放在productList
   const [ productList, setProductList ] = useState([]);
+  // 儲存分類後的產品
+  const [ categoryProducts, setCategoryProducts ] = useState([]);
+  // 儲存所點擊到的Tab
+  const [ activeTab, setActiveTab ] = useState("全部");
   // 儲存彈跳視窗顯示或隱藏
   const [ showPopup, setShowPopup ] = useState(false);
   // 儲存所點擊到的商品
@@ -73,9 +77,35 @@ export function MenuPage() {
           // data.id會取出firebase文件的id，再使用展開方法將屬性id塞進productData的陣列裡
           return{ ...data.data(), id: data.id};
         })
+        // 排序：價格由小到大
+        productData.sort((a, b) => {
+          return a.price - b.price;
+        })
         setProductList(productData);
+        
       })
   },[]);
+
+  // api取得資料後，顯示全部菜單
+  useEffect(() => {
+    // productList有內容
+    if (productList.length) {
+      selectedCategory("全部");
+    }
+  },[productList])
+
+  /**
+   * 篩選所點擊到的產品分類
+   * @param title 點擊到的Tab
+   */
+  function selectedCategory(title) {
+    if (title === "全部") {
+      setCategoryProducts(productList);
+    } else {
+      setCategoryProducts(productList.filter(item => item.category === title));
+    }
+    setActiveTab(title);
+  }
 
   /**
    * 送出彈窗
@@ -125,7 +155,6 @@ export function MenuPage() {
     if (productIdIdx !== -1) {
       // 選擇的產品資訊
       let productListSave = productList[productIdIdx];
-      console.log(productListSave);
       // 帶入特製
       setSelectedOption(cartItems[index].options);
       // 帶入數量
@@ -139,9 +168,6 @@ export function MenuPage() {
 
     setShowPopup(true);
   }
-  // useEffect(() => {
-  //   console.log(cartItems);
-  // },[cartItems])
 
   //顯示時間 
   function currentDate() {
@@ -192,8 +218,13 @@ export function MenuPage() {
           <div className="tabArea">
             {
               tabListData.map((item) => {
+                // console.log(tabListData.indexOf(item.title))
                 return (
-                  <button className="btn tabStyle" key={item.title}>{item.title}</button>
+                  <button 
+                    key={item.title}
+                    className={`btn tabStyle ${item.title === activeTab  ? "active" : ""}`} 
+                    onClick={() => selectedCategory(item.title)}
+                  >{item.title}</button>
                 )
               })
             }
@@ -201,7 +232,7 @@ export function MenuPage() {
           {/* 產品區塊 */}
           <div className="productList">
             {
-              productList.map((item) => {
+              categoryProducts.map((item) => {
                 return (
                   <div 
                     className="productCard" 

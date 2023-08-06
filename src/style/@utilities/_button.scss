@@ -39,9 +39,8 @@
       left: 0;
     }
   }
-
-
 }   
+
 
 // 頁籤按鈕
 .tabStyle {
@@ -50,7 +49,7 @@
 	border: 2px solid $primary;
 	margin: 0 16px 8px 0; 
 
-	&:active {
+	&.active {
 		background-color: $primary;
 		color: $fontLight;
 	}

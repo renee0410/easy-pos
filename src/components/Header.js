@@ -3,7 +3,6 @@ import Icon from '@mdi/react';
 import { 
   mdiMagnify, 
   mdiAccount,
-  mdiMenu,
 } from '@mdi/js';
 
 export function Header() {
