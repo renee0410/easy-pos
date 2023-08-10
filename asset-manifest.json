@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/easy-pos/static/css/main.8bd67e74.css",
+    "main.js": "/easy-pos/static/js/main.2a70d3b6.js",
+    "static/js/787.9dbf7227.chunk.js": "/easy-pos/static/js/787.9dbf7227.chunk.js",
+    "static/media/spaghetti-with-bolognese-sauce-wooden-tablexa.jpg": "/easy-pos/static/media/spaghetti-with-bolognese-sauce-wooden-tablexa.6d58730c26e6ee14f83f.jpg",
+    "static/media/close-up-french-fries-plate.jpg": "/easy-pos/static/media/close-up-french-fries-plate.d72ddc3be496988d51c3.jpg",
+    "static/media/butter-cookies.jpg": "/easy-pos/static/media/butter-cookies.9991eeb1e303b0bc6764.jpg",
+    "static/media/closeup-glass-ice-tea-with-milk-table-white.jpg": "/easy-pos/static/media/closeup-glass-ice-tea-with-milk-table-white.1110eacf015d51e8663e.jpg",
+    "static/media/fried-tofu.jpg": "/easy-pos/static/media/fried-tofu.fb67b53683db807f9cfa.jpg",
+    "static/media/flat-lay-japanese-dumplings-assortment.jpg": "/easy-pos/static/media/flat-lay-japanese-dumplings-assortment.f2e4817edb521866fb9e.jpg",
+    "static/media/flat-lay-salad-with-chicken-sesame-seeds.jpg": "/easy-pos/static/media/flat-lay-salad-with-chicken-sesame-seeds.0865a0db2cd6cd36a9fb.jpg",
+    "static/media/top-view-salad-dark-bowl.jpg": "/easy-pos/static/media/top-view-salad-dark-bowl.e8eff68fcbb13e03a9e1.jpg",
+    "static/media/front-view-herbal-tea-concept-with-lemon.jpg": "/easy-pos/static/media/front-view-herbal-tea-concept-with-lemon.10df5c9fc1981290fec8.jpg",
+    "static/media/delicious-peanut-butter-toast.jpg": "/easy-pos/static/media/delicious-peanut-butter-toast.cc00d2b75eaf5cf15723.jpg",
+    "static/media/ice-falling-brown-drink.jpg": "/easy-pos/static/media/ice-falling-brown-drink.d56d06d2d5d2f3975586.jpg",
+    "static/media/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese.jpg": "/easy-pos/static/media/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese.b892d01ebdb39783b750.jpg",
+    "static/media/sandwich.jpg": "/easy-pos/static/media/sandwich.3fa5f9c465695a700f8b.jpg",
+    "static/media/russian-apetizer-blinchik-crepes-inside-white-plate.jpg": "/easy-pos/static/media/russian-apetizer-blinchik-crepes-inside-white-plate.5d39995082bcda0aa3c9.jpg",
+    "static/media/Logo.svg": "/easy-pos/static/media/Logo.6d21f765bf3808be6b17ff5d91157bd8.svg",
+    "index.html": "/easy-pos/index.html",
+    "static/media/LoginBg.svg": "/easy-pos/static/media/LoginBg.fa172e6c1d26a49922964a4e9cf28c26.svg",
+    "main.8bd67e74.css.map": "/easy-pos/static/css/main.8bd67e74.css.map",
+    "main.2a70d3b6.js.map": "/easy-pos/static/js/main.2a70d3b6.js.map",
+    "787.9dbf7227.chunk.js.map": "/easy-pos/static/js/787.9dbf7227.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8bd67e74.css",
+    "static/js/main.2a70d3b6.js"
+  ]
+}
