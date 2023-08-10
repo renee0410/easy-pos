@@ -1,0 +1,74 @@
+* {
+	position: relative;
+	box-sizing: border-box;
+	color: $fontDefault;
+	font-size: $fontSizeDefault;
+
+	// scrollBar樣式
+	&::-webkit-scrollbar{
+		height: 8px;
+		width: 8px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $scrollbarTrack;
+		border-radius: 10px;
+		margin: 50px 120px;
+	}
+	&::-webkit-scrollbar-thumb{
+		border-radius: 10px;
+		background-color: $scrollbarThumb;
+	}
+  a {
+    text-decoration: none;
+  }
+}
+
+// 背景色
+body {
+	background: $bgc;
+	height: 100%;
+	line-height: 1.2;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid $gray;
+}
+
+// 文字大小
+h1 {
+	font-size: $fontSizeDefault + $fontSpace * 15; // 40
+}
+h2 {
+	font-size: $fontSizeDefault + $fontSpace * 9; // 30
+}
+h3 {
+	font-size: $fontSizeDefault + $fontSpace * 3; // 22
+}
+h4 {
+	font-size: $fontSizeDefault + $fontSpace * 2;  //20
+}
+h5 {
+	font-size: $fontSizeDefault + $fontSpace; // 18
+}
+h6 {
+	font-size: $fontSizeDefault;  // 16
+}
+span {
+	font-size: $fontSizeDefault - $fontSpace;  //14
+}
+p {
+	font-size: $fontSizeDefault - $fontSpace * 2
+} // 12
+table {
+  font-size: $fontSizeDefault + $fontSpace;  // 18
+}
+
+// btn預設樣式
+.btn {
+  background-color: $bgc;
+  color: $secondary;
+	box-shadow: $shadow;
+  white-space: nowrap;
+  cursor: pointer;
+}

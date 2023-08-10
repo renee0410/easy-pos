@@ -1,0 +1,182 @@
+// 菜單頁面
+.menuPage {
+	display: flex;
+  height: calc(100vh - 70px);  // 70px:header高度
+	
+  // 左側產品列表區塊
+	.productListArea {
+		width: calc(100% - 400px);  // 400px:右側購物車區塊寬度
+
+    // 上方頁籤區塊
+		.tabArea {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow: auto;
+		}
+
+    // 下方產品列表區塊
+    .productList {
+      margin: 40px 8px 0 0;
+      height: calc(100% - 102px);  // 102px: 頁籤高度＋margin-top:64px
+      overflow-y: auto;
+      padding-right: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); // 平均三等份
+      gap: 16px;  // 上下左右間距16px
+
+      .productCard {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        
+
+        // 圖片外框
+        .imgBoxFit {
+          margin: auto;  // 置中
+          width: 200px;
+          height: 200px;
+          border-radius: 8px; /* 設置弧度 */
+          overflow: hidden; /* 隐藏超出邊界的内容 */
+          @include pad{
+            width: 175px;
+            height: 175px;
+          }
+      
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .cardBody {
+          margin-top: 16px;
+
+          .cardTitle,.cardPrice {
+            display: block;
+            text-align: center;
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  // 右側購物車區塊
+	.cartArea {
+	  width: 400px;
+    height: calc(100vh - 102px);  // 102px = 上下padding:16 + header:70px
+    border-radius: 10px;
+    box-shadow: $layoutShadow;
+
+    // 
+    .cartTop {
+      padding: 16px;
+      height: 164px;
+
+      h2 {
+        margin-bottom: 16px;
+        text-align: center;
+      }
+  
+      // 上方訂單資訊區塊
+      .info {
+        display: flex;
+        justify-content: space-between;
+  
+        * {
+          color: $secondary;
+        }
+      }
+  
+      // 內用外帶按鈕區塊
+      .togoBtn {
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+  
+        .btn {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    // 購物車清單區塊
+    .cartList {
+      height: calc(100% - 302px); // 302px = cartTop:164px + cartBottom:138px
+      overflow: auto;
+      padding: 0 16px 0 16px;
+
+      .cartProduct {
+      margin-bottom: 16px;
+      padding: 8px;
+      background-color: $light;
+      border-radius: 10px;
+      box-shadow: $shadow;
+      display: flex;
+      justify-content: space-between;
+      
+      // 左邊區塊(標題、詳細內容、數量)
+      .lCartProduct {
+        padding: 0 4px 0 4px;
+        width: calc(100% - 96px);
+        * {
+          display: block;
+        }
+
+        .productTitle {
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+        
+        .productDetail {
+          margin-bottom: 8px;
+        }
+      }
+      
+      // 右邊區塊(修改刪除按鈕、金額)
+      .rCartProduct {
+        width: 96px;
+        margin-right: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .btn {
+          margin-left: 8px;
+        }
+        .modifyBtn,.productPrice {
+          align-self: flex-end;
+        }
+        .productPrice {
+          font-weight: bold;
+        }
+      }
+    }
+    }
+
+    // 下方總金額及結帳按鈕區塊
+    .cartBottom {
+      padding: 16px;
+      height: 138px;
+
+      .totalAmountArea {
+        padding: 8px 0 16px 0;
+        display: flex;
+        justify-content: space-between;
+
+        > h4 {
+          font-weight: bold;
+        }
+      }
+
+      .payBtnArea {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+    }
+    
+	}
+}

@@ -1,0 +1,105 @@
+// 側邊欄選單按鈕
+.sideMenuBtn {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+  cursor: pointer;
+
+	.icon {
+		width: 30px;
+		height: 30px;
+
+    * {
+      color: $secondary;  // *代表icon裡面的<svg>、<path>
+    }
+  }
+
+  .linkTitle > h6{      // 父層為class linkTitle的所有h6標籤
+    margin-left: 24px;
+    color: $secondary;
+  }
+
+  &.active {
+    background: linear-gradient(to right, hsl(213, 100%, 88%, 0.29), hsl(212, 59%, 83%, 0.42));
+
+    .icon * {
+      color: $primary;
+    }
+
+    .linkTitle > h6 {
+      color: $primary;
+    }
+
+    &::before {
+      content: "";
+      height: 100%;
+      width: 4px;
+      background-color: $primary;
+      position: absolute;
+      left: 0;
+    }
+  }
+}   
+
+
+// 頁籤按鈕
+.tabStyle {
+	padding: 10px 32px;
+	border-radius: 10px;
+	border: 2px solid $primary;
+	margin: 0 16px 8px 0; 
+
+	&.active {
+		background-color: $primary;
+		color: $fontLight;
+	}
+}
+
+.btn {
+  // 小按鈕樣式
+  &.btnMd {
+    padding: 5px 16px;
+    border-radius: 20px;
+    border: 1px solid $secondary;
+
+    &.active {
+      background-color: $primary;
+      color: $fontLight;
+    }
+  }
+
+  // 大按鈕樣式
+  &.btnLg {
+    padding: 8px 72px;
+    border-radius: 10px;
+    
+    // 確定、結帳樣式
+    &.btnLgPrimary {
+      background-color: $primary;
+      color: $fontLight;
+      border: 1px solid $primary;
+    }
+  
+    // 返回、取消樣式
+    &.btnLgSecondary{
+      border: 1px solid $secondary;
+    }
+  }
+
+  // 修改按鈕、刪除按鈕
+  &.btnSm {
+    border-radius: 50%;
+    background-color: $white;
+    border: 1px solid $white;
+    padding: 3px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+
+    * {
+      color: $primary;
+    }
+  }
+}

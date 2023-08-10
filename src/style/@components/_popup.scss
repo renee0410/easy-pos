@@ -1,0 +1,100 @@
+.mask {
+  background-color: $mask;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+}
+
+.popupArea {
+  z-index: 500;
+  width: 420px;
+  max-height: 80vh;  // 最大高度為可視範圍百分之80
+  border-radius: 20px;
+  background-color: $white;
+
+  // 定位置中
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  h5 {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .container {
+    height: 100%;
+  }
+
+  .popupTop{
+    margin-bottom: 32px;
+    height: 27px;
+    .popupTitle {
+      font-weight: bold;
+    }
+  }
+
+  // 中間內容區塊
+  .popupContent {
+    height: calc(100% - 116px);  // 116px:popupTop:27px + popupBottom:41px + margin48px
+    margin-bottom: 32px;
+    overflow-Y: auto;
+
+    // 特製按鈕區塊
+    .specialProductArea {
+      margin-bottom: 24px;
+      
+      .btn {
+        margin: 8px 8px 0 0;
+      }
+    }
+
+    // 備註欄區塊
+    .remarkArea {
+      margin-bottom: 32px;
+
+      textArea {
+        width: 100%;
+        height: 72px;
+        resize: none;  // 不可調整輸入匡大小
+        border: 1px solid $secondary;
+        padding: 4px;
+  
+        &::placeholder {
+          color: $secondary;
+        }
+      }
+    }
+  }
+
+  .popupBottom {
+    height: 41px;
+    .btn {
+      width: 100%;
+    }
+  }
+
+  .closeBtn {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    .icon {
+      width: 100%;
+      height: 100%;
+
+      * {
+        color: $secondary;
+
+        &:hover {
+          color: $fontDefault;
+        }
+      }
+    }
+  }
+}

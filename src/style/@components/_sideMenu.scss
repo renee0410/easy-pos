@@ -1,0 +1,49 @@
+.sideMenuArea {
+	background-color: $white;
+	width: 227px;
+	height: 100vh;
+	padding: 0 16px;
+	box-shadow: $layoutShadow;
+	
+  .sideMenuSwitch {
+    width: 30px;
+    height: 60px;
+    border-radius: 0 10px 10px 0;
+    background-color: $light;
+    opacity: 0.6;
+    box-shadow: $layoutShadow;
+    // 垂直置中
+    display: flex;
+    align-items: center;
+    // 定位
+    position: absolute;
+    top: 50%;
+    right: -20%;
+    transform: translate(-50%);
+
+    .icon {
+      width: 30px;
+      height: 30px;
+
+      * {
+        color: $primary;
+      }
+    }
+  }
+
+	.logoArea {
+		text-align: center;
+		padding-top: 48px;
+	}
+	
+	.menuArea {
+		margin-top: 64px;
+
+		// 將登出按鈕推到最下面，(100可視範圍 -  (logoArea高度(83.61px) + menuArea的padding(64px) + footerArea(71px)))
+		height: calc(100vh - 238.61px);
+		// 捲軸
+		overflow-x: hidden;
+    overflow-y: auto;
+	}
+}
+

@@ -1,0 +1,77 @@
+header {
+	background-color: $white;
+	height: 70px;
+	box-shadow: $layoutShadow;
+	display: flex;
+
+	// searchBar區塊
+	.searchBar {
+		position: relative;
+		width: calc(100% - 400px);
+		padding: 16px;
+
+		// 搜尋框樣式
+		.searchBarStyle {
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+			border: 0;
+			background-color: $light;
+			box-shadow: $shadow;
+			padding-left: 16px;
+
+			&::placeholder {
+				color: $secondary;
+			}
+		}
+
+		.icon {
+			width: 32px;
+			height: 32px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 24px;
+
+      * {
+        color: $secondary;
+      }
+		}
+	}
+
+	// userArea區塊
+	.userArea {
+		width: 400px;
+		padding: 16px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center; 
+
+		.userContent {
+			text-align: right;
+		}
+		
+		.userPhoto {
+			position: relative;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			margin: 0 8px 0 24px;
+			background-color: $light;
+			box-shadow: $shadow;
+
+			.icon {
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+
+        * {
+          color: $secondary;
+        }
+			}
+		}
+	}
+}

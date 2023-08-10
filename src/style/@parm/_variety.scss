@@ -1,0 +1,30 @@
+// 文字大小預設
+$fontSizeDefault: 1rem;
+// 文字大小倍率
+$fontSpace: 0.1rem;
+// label文字大小
+$labelFontSize: $fontSizeDefault + $fontSpace;
+
+// 文字顏色
+$fontDefault: #656C71;
+$fontLight: #FFFCFC;
+
+// 捲軸顏色
+$scrollbarTrack:  rgb(222, 221, 221, .3);
+$scrollbarThumb: rgb(73, 144, 228, .15);
+
+
+// 陰影
+$layoutShadow: 0 1px 6px rgba(0, 0, 0, .15);
+$shadow: 0 2px 4px rgba(0, 0, 0, .16);    // 除了layout以外都使用這個shadow
+
+// 固定色
+$primary: #4990E4;
+$secondary: #BCBCBC;
+$danger: #FF5050;
+$success:#1EC371;
+$light: #F1F6F7;
+$bgc: #FAFBFD;
+$gray: #DEDDDD;
+$white: #fff;
+$mask: rgba(0, 0, 0, 0.5);
