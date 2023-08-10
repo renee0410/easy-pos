@@ -13,7 +13,13 @@ export function Login() {
     handleSubmit, 
     control,
     formState: { errors }, // 查看錯誤訊息
-  } = useForm({mode: 'onTouched'});  // {mode: 'onTouched'}立即執行判斷錯誤
+  } = useForm({
+    mode: 'onTouched', // {mode: 'onTouched'}立即執行判斷錯誤
+    defaultValues: {   // 帳號密碼預設值
+      email: 'admin@gmail.com',
+      password: '123456'
+    }
+  });  
   // 即時監聽input的值
   const email = useWatch({
     control,
