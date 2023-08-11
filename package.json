@@ -2,6 +2,7 @@
   "name": "easy-pos",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://renee0410.github.io/easy-pos",
   "dependencies": {
     "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
