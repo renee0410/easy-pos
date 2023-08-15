@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/easy-pos/static/css/main.8bd67e74.css",
-    "main.js": "/easy-pos/static/js/main.87ec1e38.js",
+    "main.js": "/easy-pos/static/js/main.c1875e7f.js",
     "static/js/787.9dbf7227.chunk.js": "/easy-pos/static/js/787.9dbf7227.chunk.js",
     "static/media/spaghetti-with-bolognese-sauce-wooden-tablexa.jpg": "/easy-pos/static/media/spaghetti-with-bolognese-sauce-wooden-tablexa.6d58730c26e6ee14f83f.jpg",
     "static/media/close-up-french-fries-plate.jpg": "/easy-pos/static/media/close-up-french-fries-plate.d72ddc3be496988d51c3.jpg",
@@ -21,11 +21,11 @@
     "index.html": "/easy-pos/index.html",
     "static/media/LoginBg.svg": "/easy-pos/static/media/LoginBg.fa172e6c1d26a49922964a4e9cf28c26.svg",
     "main.8bd67e74.css.map": "/easy-pos/static/css/main.8bd67e74.css.map",
-    "main.87ec1e38.js.map": "/easy-pos/static/js/main.87ec1e38.js.map",
+    "main.c1875e7f.js.map": "/easy-pos/static/js/main.c1875e7f.js.map",
     "787.9dbf7227.chunk.js.map": "/easy-pos/static/js/787.9dbf7227.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8bd67e74.css",
-    "static/js/main.87ec1e38.js"
+    "static/js/main.c1875e7f.js"
   ]
 }
