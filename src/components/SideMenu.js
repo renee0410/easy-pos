@@ -66,13 +66,13 @@ export function SideMenu() {
   return (
 		<>
 			<aside className="sideMenuArea">
-        <div className="sideMenuSwitch">
+        {/* <div className="sideMenuSwitch">
           <div className="icon">
             <Icon
               path={mdiChevronDoubleLeft}
             ></Icon>
           </div>
-        </div>
+        </div> */}
 				<div className="logoArea">
 					<img src={Logo} alt="" />
 				</div>
