@@ -18,6 +18,9 @@
 		z-index: 100;
     position: fixed;
     top: 0;
+    &.collapsed {
+      margin-left: -227px;
+    }
     @include pad {
       margin-left: -227px;
     }
@@ -27,6 +30,10 @@
 		width: calc(100vw - 227px);
     margin-left: 227px;
     height: 100vh;
+    &.collapsed {
+      width: 100vw;
+      margin-left: 0;
+    }
     @include pad {
       width: 100vw;
       margin-left: 0;

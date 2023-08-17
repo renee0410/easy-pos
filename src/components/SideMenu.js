@@ -16,7 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 
-export function SideMenu() {
+export function SideMenu({ isCollapsed, setIsCollapsed }) {
 	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);
 	const icons = [
 		{	
@@ -50,8 +50,8 @@ export function SideMenu() {
       link: 'setting'
 		},
 	];
-  // 
   const navigate = useNavigate(); 
+  
 
   // 登出功能
   const handleLogout = () => {
@@ -63,16 +63,21 @@ export function SideMenu() {
     });
   }
 
+  // 收合側邊欄選單
+  const toggleSideMenu = () => {
+    setIsCollapsed(pre => !pre); // 儲存前一個狀態
+  };
+
   return (
 		<>
 			<aside className="sideMenuArea">
-        {/* <div className="sideMenuSwitch">
+        <div className="sideMenuSwitch" onClick={toggleSideMenu}>
           <div className="icon">
             <Icon
               path={mdiChevronDoubleLeft}
             ></Icon>
           </div>
-        </div> */}
+        </div>
 				<div className="logoArea">
 					<img src={Logo} alt="" />
 				</div>
