@@ -1,3 +1,6 @@
+import { useEffect, useContext } from 'react';
+import { SearchContext } from "../pages/Layout";
+
 // icon
 import Icon from '@mdi/react';
 import { 
@@ -6,11 +9,19 @@ import {
 } from '@mdi/js';
 
 export function Header() {
+  // 向共用環境SearchContext取出方法
+  const { searchQuery, setSearchQuery } = useContext(SearchContext);
+
 	return (
 		<>
 			<header>
 				<div className="searchBar">
-					<input type="text" className="searchBarStyle" placeholder="Search"/>
+					<input 
+            type="text" 
+            className="searchBarStyle" 
+            placeholder="Search"
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
 					<div className="icon">
 						<Icon path={mdiMagnify}/>
 					</div>
