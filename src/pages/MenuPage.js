@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button } from "../components/Button";
 import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
+import { SearchContext } from "../pages/Layout";
 
 // icon
 import { 
@@ -67,6 +68,9 @@ export function MenuPage() {
   const [ totalPrice, setTotalPrice] = useState(0);
   // 儲存內用外帶
   const [ togo, setTogo ] = useState("內用");
+  // 向共用環境SearchContext取出方法
+  const { searchQuery, setSearchQuery } = useContext(SearchContext);
+
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
@@ -92,21 +96,32 @@ export function MenuPage() {
     if (productList.length) {
       selectedCategory("全部");
     }
-  },[productList])
+  },[productList]);
+
+  // 輸入匡的值有變更時，才會觸發selectedCategory函式
+  useEffect(() => {
+    selectedCategory(activeTab);
+  },[searchQuery])
 
   /**
    * 篩選所點擊到的產品分類
    * @param title 點擊到的Tab
    */
   function selectedCategory(title) {
+    // tab篩選
     if (title === "全部") {
       setCategoryProducts(productList);
     } else {
       setCategoryProducts(productList.filter(item => item.category === title));
     }
+    // 輸入匡篩選
+    if (searchQuery) {
+      setCategoryProducts(pre => pre.filter(item => item.title.includes(searchQuery)));
+    }
+
     setActiveTab(title);
   }
-
+  
   /**
    * 送出彈窗
    * @param cartId null: 新增 !null: 修改 
