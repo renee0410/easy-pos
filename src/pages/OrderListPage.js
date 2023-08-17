@@ -20,6 +20,12 @@ export function OrderListPage() {
         const orderList = doc.docs.map((data) => {
           return {...data.data(), id: data.id};
         })
+        // 排序日期時間
+        orderList.sort((a, b) => {
+          const dateTimeA = new Date(a.orderDate + ' ' + a.orderTime);
+          const dateTimeB = new Date(b.orderDate + ' ' + b.orderTime);
+          return dateTimeB - dateTimeA;
+        });
         setOrderList(orderList);
       })
   }
