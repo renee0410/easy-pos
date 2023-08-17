@@ -72,7 +72,7 @@ export function SideMenu({ isCollapsed, setIsCollapsed }) {
 		<>
 			<aside className="sideMenuArea">
         <div className="sideMenuSwitch" onClick={toggleSideMenu}>
-          <div className="icon">
+          <div className={`icon ${isCollapsed ? "rotate" : ""}`}>
             <Icon
               path={mdiChevronDoubleLeft}
             ></Icon>

@@ -18,6 +18,7 @@
 		z-index: 100;
     position: fixed;
     top: 0;
+    transition: margin-left 0.25s;
     &.collapsed {
       margin-left: -227px;
     }
@@ -30,6 +31,7 @@
 		width: calc(100vw - 227px);
     margin-left: 227px;
     height: 100vh;
+    transition: width 0.25s, margin-left 0.25s;
     &.collapsed {
       width: 100vw;
       margin-left: 0;

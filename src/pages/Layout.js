@@ -24,6 +24,7 @@ export function Layout() {
 				{/* 側邊欄選單 */}
 				<SideMenu
           setIsCollapsed={setIsCollapsed}
+          isCollapsed={isCollapsed}
         ></SideMenu>
 			</div>
 			<div className={`rBlock  ${isCollapsed ? "collapsed" : ""}`}>
