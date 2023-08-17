@@ -121,7 +121,7 @@ export function MenuPage() {
 
     setActiveTab(title);
   }
-  
+
   /**
    * 送出彈窗
    * @param cartId null: 新增 !null: 修改 
@@ -212,6 +212,12 @@ export function MenuPage() {
    * @param isPaid 是否結帳
    */
   function onSubmit(isPaid) {
+    // 判斷購物車有內容的時候才會繼續執行
+    if (cartItems.length === 0) {
+      alert('購物車是空的，請加入商品！');
+      return;
+    }
+    
     addDoc(collection(db, "orderList"), {
       cartItems,
       togo,
