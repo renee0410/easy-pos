@@ -6,7 +6,7 @@ import { Header } from "../components/Header";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // 生成共用元件存放環境
-export const SearchContext = createContext({});
+export const AppContext = createContext({});
 
 export function Layout() {
   const navigate = useNavigate();
@@ -14,6 +14,8 @@ export function Layout() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   // 儲存搜尋值
   const [searchQuery, setSearchQuery] = useState(null);
+  // 儲存是否為loading狀態
+  const [ isLoading, setIsLoading ] = useState(false);
   
 
   // 驗證是否登入
@@ -25,7 +27,7 @@ export function Layout() {
   });
 
 	return (
-    <SearchContext.Provider value={{searchQuery, setSearchQuery}}>
+    <AppContext.Provider value={{searchQuery, setSearchQuery, isLoading, setIsLoading }}>
       <div className="layout">
         <div className={`lBlock ${isCollapsed ? "collapsed" : ""}`}>
           {/* 側邊欄選單 */}
@@ -41,6 +43,6 @@ export function Layout() {
           <Outlet></Outlet>
         </div>
       </div>
-    </SearchContext.Provider>
+    </AppContext.Provider>
 	)
 }

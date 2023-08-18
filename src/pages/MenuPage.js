@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
 import { Loading } from "../components/Loading";
-import { SearchContext } from "../pages/Layout";
+import { AppContext } from "../pages/Layout";
 
 // icon
 import { 
@@ -41,9 +41,8 @@ export function MenuPage() {
 			title: '飲料',
 		},
 	]
-  // 儲存是否為loading狀態
-  const [ isLoading, setIsLoading ] = useState(false);
-  // 將firebase取出的productData存放在productList
+
+  // 將firebase取出的productData存放在productList  
   const [ productList, setProductList ] = useState([]);
   // 儲存分類後的產品
   const [ categoryProducts, setCategoryProducts ] = useState([]);
@@ -71,8 +70,8 @@ export function MenuPage() {
   const [ totalPrice, setTotalPrice] = useState(0);
   // 儲存內用外帶
   const [ togo, setTogo ] = useState("內用");
-  // 向共用環境SearchContext取出方法
-  const { searchQuery, setSearchQuery } = useContext(SearchContext);
+  // 向共用環境AppContext取出方法
+  const { searchQuery, setSearchQuery, isLoading, setIsLoading } = useContext(AppContext);
 
   
   // 初始化時呼叫產品列表api

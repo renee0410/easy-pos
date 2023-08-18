@@ -1,10 +1,8 @@
-import { useEffect,useState } from "react";
+import { useEffect,useState, useContext } from "react";
 import { Button } from "../components/Button"
-// icon
-import { 
-	mdiLeadPencil, // 修改
-  mdiTrashCan  // 刪除
-} from '@mdi/js';
+import { Loading } from "../components/Loading";
+import { AppContext } from "../pages/Layout";
+
 // firebase
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
@@ -12,9 +10,13 @@ import { db } from "../utils/firebase";
 export function OrderListPage() {
   // 儲存訂單列表資訊
   const [ orderList, setOrderList ] =useState([]);
+  // 向共用環境AppContext取出方法
+  const { isLoading, setIsLoading } = useContext(AppContext);
+
 
   // 取得訂單列表api
   function getOrderList() {
+    setIsLoading(true);
     getDocs(collection(db, "orderList")).
       then((doc) => {
         const orderList = doc.docs.map((data) => {
@@ -27,6 +29,7 @@ export function OrderListPage() {
           return dateTimeB - dateTimeA;
         });
         setOrderList(orderList);
+        setIsLoading(false);
       })
   }
 
@@ -48,6 +51,9 @@ export function OrderListPage() {
     
   return (
     <>
+      {
+        isLoading && <Loading></Loading>
+      }
       <div className="container orderListPage">
         <div className="orderListPageHeader">
           <h2>訂單管理</h2>
