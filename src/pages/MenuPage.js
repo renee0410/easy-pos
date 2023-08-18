@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Button } from "../components/Button";
 import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
+import { Loading } from "../components/Loading";
 import { SearchContext } from "../pages/Layout";
 
 // icon
@@ -40,6 +41,8 @@ export function MenuPage() {
 			title: '飲料',
 		},
 	]
+  // 儲存是否為loading狀態
+  const [ isLoading, setIsLoading ] = useState(false);
   // 將firebase取出的productData存放在productList
   const [ productList, setProductList ] = useState([]);
   // 儲存分類後的產品
@@ -74,6 +77,8 @@ export function MenuPage() {
   
   // 初始化時呼叫產品列表api
   useEffect(() => {
+    // api獲取資料前為載入中
+    setIsLoading(true);
     getDocs(collection(db, "products"))
       .then((doc) => {
         // doc為物件，docs為取得doc底下陣列的方法
@@ -86,7 +91,8 @@ export function MenuPage() {
           return a.price - b.price;
         })
         setProductList(productData);
-        
+        // api獲取資料後為載入完成
+        setIsLoading(false);
       })
   },[]);
 
@@ -233,6 +239,10 @@ export function MenuPage() {
   return (
     <>
       <div className="container menuPage">
+        {/* 載入中 */}
+        {
+          isLoading && <Loading></Loading>
+        }
         {/* 左側產品列表區塊 */}
         <div className="productListArea">
           {/* 頁籤區塊 */}
