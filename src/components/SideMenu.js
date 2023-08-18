@@ -19,11 +19,11 @@ import { getAuth, signOut } from "firebase/auth";
 export function SideMenu({ isCollapsed, setIsCollapsed }) {
 	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);
 	const icons = [
-		{	
-			path: mdiViewDashboard,
-			linkTitle: '儀表板',
-      link: 'dashboard'
-		}, 
+		// {	
+		// 	path: mdiViewDashboard,
+		// 	linkTitle: '儀表板',
+    //   link: 'dashboard'
+		// }, 
 		{	
 			path: mdiFileDocumentOutline,
 			linkTitle: '菜單',
@@ -34,21 +34,21 @@ export function SideMenu({ isCollapsed, setIsCollapsed }) {
 			linkTitle: '訂單管理',
       link: 'orderList'
 		},
-		{	
-			path: mdiCashRegister,
-			linkTitle: '結帳作業',
-      link: 'cash'
-		},
-		{	
-			path: mdiTimetable,
-			linkTitle: '班表管理',
-      link: 'schedule'
-		},
-		{	
-			path: mdiCogOutline,
-			linkTitle: '設定',
-      link: 'setting'
-		},
+		// {	
+		// 	path: mdiCashRegister,
+		// 	linkTitle: '結帳作業',
+    //   link: 'cash'
+		// },
+		// {	
+		// 	path: mdiTimetable,
+		// 	linkTitle: '班表管理',
+    //   link: 'schedule'
+		// },
+		// {	
+		// 	path: mdiCogOutline,
+		// 	linkTitle: '設定',
+    //   link: 'setting'
+		// },
 	];
   const navigate = useNavigate(); 
   
