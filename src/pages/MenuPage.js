@@ -91,7 +91,9 @@ export function MenuPage() {
         })
         setProductList(productData);
         // api獲取資料後為載入完成
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        },500);
       })
   },[]);
 

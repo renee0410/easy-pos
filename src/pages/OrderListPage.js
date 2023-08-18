@@ -29,7 +29,9 @@ export function OrderListPage() {
           return dateTimeB - dateTimeA;
         });
         setOrderList(orderList);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        },500);
       })
   }
 
@@ -40,7 +42,6 @@ export function OrderListPage() {
 
   // 按下結帳按鈕時呼叫更改訂單列表api
     function handleSubmit(id) {
-      console.log(id)
       const washingtonRef = doc(db, "orderList", id);
       updateDoc(washingtonRef, {
         isPaid: true
@@ -75,7 +76,6 @@ export function OrderListPage() {
               <tbody>
                 {
                   orderList.map((item, index) => {
-                    console.log(item)
                     return (
                       <tr key={item.id}>
                         <td>{`${(index + 1).toString().padStart(2, "0")}`}</td>
