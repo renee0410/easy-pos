@@ -1,13 +1,43 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
 import { faker } from '@faker-js/faker';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Loading } from "../components/Loading";
+import { AppContext } from "../pages/Layout";
 import Calendar from 'moedim';
+// firebase
+import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
+import { db } from "../utils/firebase";
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export function Dashboard() {
-  const [value, setValue] = useState(new Date())
+  const [value, setValue] = useState(new Date());
+  const [dashboardData , setDashboardData] = useState([]);
+  // 向共用環境AppContext取出方法
+  const { isLoading, setIsLoading } = useContext(AppContext);
+
+  function getOrderList() {
+    setIsLoading(true);
+    getDocs(collection(db, "orderList")).
+      then((doc) => {
+        const dashboardData = doc.docs.map((data) => {
+          return {...data.data(), id: data.id};
+        })
+        setDashboardData(dashboardData);
+        setTimeout(() => {
+          setIsLoading(false);
+        },500);
+      });
+  }
+  // 呼叫取得訂單列表api
+  useEffect(() => {
+    getOrderList();
+  },[]);
+  useEffect(() => {
+    console.log(dashboardData);
+  },[dashboardData]);
+    
   const options = {
     responsive: true,
     maintainAspectRatio: false,  // 不保持原始的寬高比
@@ -62,35 +92,42 @@ export function Dashboard() {
       },
     ],
   };
+  
 
   return (
-    <div className=" dashboard container">
-      {/* 數字區塊 */}
-      <div className="dashboardTop">
-        <div className="calendar">
-        <Calendar value={value} onChange={(d) => setValue(d)} className='calenderStyle'/>
-        </div>
-        <div className="dataNumArea">
-          {/* 訂單數量 */}
-          <div className="orderQuantity">
-            <h2 className="text">訂單總數</h2>
-            <h2>1,234</h2>
+    <>
+      {
+        isLoading && <Loading></Loading>
+      }
+      <div className=" dashboard container">
+        {/* 數字區塊 */}
+        <div className="dashboardTop">
+          <div className="calendar">
+          <Calendar value={value} onChange={(d) => setValue(d)} className='calenderStyle'/>
           </div>
-          {/* 營業額 */}
-          <div className="revenue">
-            <h2 className="text">營業額</h2>
-            <h2 className="num">NT$123,456</h2>
+          <div className="dataNumArea">
+            {/* 訂單數量 */}
+            <div className="orderQuantity">
+              <h2 className="text">訂單總數</h2>
+              <h2>{dashboardData.length}</h2>
+            </div>
+            {/* 營業額 */}
+            <div className="revenue">
+              <h2 className="text">營業額</h2>
+              <h2 className="num">{`NT$${dashboardData.reduce((acc, val) => acc + val.totalPrice, 0)}`}</h2>
+            </div>
+          </div>
+          <div className="doughnutArea">
+            <Doughnut options={options} data={doughnutData} />
           </div>
         </div>
-        <div className="doughnutArea">
-          <Doughnut options={options} data={doughnutData} />
+        <div className="chartArea">
+          <div className="verticalBarArea">
+            <Bar options={options} data={barData} />
+          </div>
         </div>
       </div>
-      <div className="chartArea">
-        <div className="verticalBarArea">
-          <Bar options={options} data={barData} />
-        </div>
-      </div>
-    </div>
+    </>
+    
   )
 }

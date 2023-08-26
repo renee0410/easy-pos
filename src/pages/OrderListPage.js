@@ -38,7 +38,6 @@ export function OrderListPage() {
   // 呼叫取得訂單列表api
   useEffect(() => {
     getOrderList();
-    
   },[]);
 
   // 按下結帳按鈕時呼叫更改訂單列表api

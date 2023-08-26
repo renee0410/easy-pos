@@ -207,7 +207,7 @@ export function MenuPage() {
 
   // 加總總金額
   function sumTotalPrice() {
-    return  cartItems.reduce((acc, val) => acc + val.itemPriceSum, 0)
+    return cartItems.reduce((acc, val) => acc + val.itemPriceSum, 0)
   }
   // 每當cartItems改變時，重新寫入總金額
   useEffect(() => {
