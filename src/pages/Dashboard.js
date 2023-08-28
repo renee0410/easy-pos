@@ -34,9 +34,6 @@ export function Dashboard() {
   useEffect(() => {
     getOrderList();
   },[]);
-  useEffect(() => {
-    console.log(dashboardData);
-  },[dashboardData]);
     
   const options = {
     responsive: true,

@@ -4,7 +4,6 @@ import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
 import { Loading } from "../components/Loading";
 import { AppContext } from "../pages/Layout";
-
 // icon
 import { 
 	mdiLeadPencil, // 修改
@@ -102,12 +101,8 @@ export function MenuPage() {
     if (productList.length) {
       selectedCategory("全部");
     }
+    console.log(productList)
   },[productList]);
-
-  // 輸入匡的值有變更時，才會觸發selectedCategory函式
-  useEffect(() => {
-    selectedCategory(activeTab);
-  },[searchQuery])
 
   /**
    * 篩選所點擊到的產品分類
@@ -127,6 +122,11 @@ export function MenuPage() {
 
     setActiveTab(title);
   }
+
+  // 輸入匡的值有變更時，才會觸發selectedCategory函式
+  useEffect(() => {
+    selectedCategory(activeTab);
+  },[searchQuery])
 
   /**
    * 送出彈窗
