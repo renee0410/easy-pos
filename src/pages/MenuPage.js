@@ -4,7 +4,6 @@ import { Popup } from "../components/Popup";
 import { Counter } from "../components/Counter";
 import { Loading } from "../components/Loading";
 import { AppContext } from "../pages/Layout";
-
 // icon
 import { 
 	mdiLeadPencil, // 修改
@@ -41,7 +40,6 @@ export function MenuPage() {
 			title: '飲料',
 		},
 	]
-
   // 將firebase取出的productData存放在productList  
   const [ productList, setProductList ] = useState([]);
   // 儲存分類後的產品
@@ -103,12 +101,8 @@ export function MenuPage() {
     if (productList.length) {
       selectedCategory("全部");
     }
+    console.log(productList)
   },[productList]);
-
-  // 輸入匡的值有變更時，才會觸發selectedCategory函式
-  useEffect(() => {
-    selectedCategory(activeTab);
-  },[searchQuery])
 
   /**
    * 篩選所點擊到的產品分類
@@ -128,6 +122,11 @@ export function MenuPage() {
 
     setActiveTab(title);
   }
+
+  // 輸入匡的值有變更時，才會觸發selectedCategory函式
+  useEffect(() => {
+    selectedCategory(activeTab);
+  },[searchQuery])
 
   /**
    * 送出彈窗
@@ -155,6 +154,7 @@ export function MenuPage() {
       itemComment: comment,  // 備註
       itemPriceSum: itemPriceSum, // 產品小計
       productId: selectedProduct.id, // 產品ID
+      category: selectedProduct.category,  // 產品分類
     };
 
     // 如果是新增
@@ -207,7 +207,7 @@ export function MenuPage() {
 
   // 加總總金額
   function sumTotalPrice() {
-    return  cartItems.reduce((acc, val) => acc + val.itemPriceSum, 0)
+    return cartItems.reduce((acc, val) => acc + val.itemPriceSum, 0)
   }
   // 每當cartItems改變時，重新寫入總金額
   useEffect(() => {

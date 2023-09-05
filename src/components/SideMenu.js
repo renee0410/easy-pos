@@ -19,11 +19,11 @@ import { getAuth, signOut } from "firebase/auth";
 export function SideMenu({ isCollapsed, setIsCollapsed }) {
 	// const [icon, setIcon] = useState([{path: mdiViewDashboard}, {path: mdiFileDocumentOutline}]);
 	const icons = [
-		// {	
-		// 	path: mdiViewDashboard,
-		// 	linkTitle: '儀表板',
-    //   link: 'dashboard'
-		// }, 
+		{	
+			path: mdiViewDashboard,
+			linkTitle: '儀表板',
+      link: 'dashboard'
+		}, 
 		{	
 			path: mdiFileDocumentOutline,
 			linkTitle: '菜單',

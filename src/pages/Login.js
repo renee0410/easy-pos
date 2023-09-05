@@ -9,10 +9,10 @@ export function Login() {
   // 跳轉頁面
   const navigate = useNavigate();
   const { 
-    register, 
-    handleSubmit, 
-    control,
-    formState: { errors }, // 查看錯誤訊息
+    register, // 資料狀態
+    handleSubmit, // 針對表單送出的管理方法
+    control,  // 一次監聽所有欄位
+    formState: { errors }, // 用於查看錯誤訊息
   } = useForm({
     mode: 'onTouched', // {mode: 'onTouched'}立即執行判斷錯誤
     defaultValues: {   // 帳號密碼預設值
@@ -29,8 +29,6 @@ export function Login() {
     control,
     name: 'password',
   });
-  // 存放alert錯誤訊息資訊
-  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = (data) => {
     const auth = getAuth();
