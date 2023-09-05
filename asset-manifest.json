@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/easy-pos/static/css/main.5aca821b.css",
-    "main.js": "/easy-pos/static/js/main.12301c67.js",
+    "main.css": "/easy-pos/static/css/main.eee4bebd.css",
+    "main.js": "/easy-pos/static/js/main.85afe83b.js",
     "static/js/787.9dbf7227.chunk.js": "/easy-pos/static/js/787.9dbf7227.chunk.js",
     "static/media/spaghetti-with-bolognese-sauce-wooden-tablexa.jpg": "/easy-pos/static/media/spaghetti-with-bolognese-sauce-wooden-tablexa.6d58730c26e6ee14f83f.jpg",
     "static/media/close-up-french-fries-plate.jpg": "/easy-pos/static/media/close-up-french-fries-plate.d72ddc3be496988d51c3.jpg",
@@ -20,12 +20,12 @@
     "static/media/Logo.svg": "/easy-pos/static/media/Logo.6d21f765bf3808be6b17ff5d91157bd8.svg",
     "index.html": "/easy-pos/index.html",
     "static/media/LoginBg.svg": "/easy-pos/static/media/LoginBg.fa172e6c1d26a49922964a4e9cf28c26.svg",
-    "main.5aca821b.css.map": "/easy-pos/static/css/main.5aca821b.css.map",
-    "main.12301c67.js.map": "/easy-pos/static/js/main.12301c67.js.map",
+    "main.eee4bebd.css.map": "/easy-pos/static/css/main.eee4bebd.css.map",
+    "main.85afe83b.js.map": "/easy-pos/static/js/main.85afe83b.js.map",
     "787.9dbf7227.chunk.js.map": "/easy-pos/static/js/787.9dbf7227.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5aca821b.css",
-    "static/js/main.12301c67.js"
+    "static/css/main.eee4bebd.css",
+    "static/js/main.85afe83b.js"
   ]
 }
